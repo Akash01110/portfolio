@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" width="960" height="600" fill="none">
+  <defs>
+    <linearGradient id="tabBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c0e17"/>
+      <stop offset="100%" stop-color="#06080e"/>
+    </linearGradient>
+    <linearGradient id="barGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="960" height="600" fill="url(#tabBg)"/>
+  <rect width="960" height="600" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+
+  <!-- Tableau Top Header -->
+  <rect width="960" height="52" fill="#141824" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <!-- Tableau Logo Icon representation -->
+  <g transform="translate(24, 16)">
+    <rect x="0" y="6" width="6" height="8" fill="#e11d48"/>
+    <rect x="8" y="0" width="6" height="20" fill="#f59e0b"/>
+    <rect x="16" y="4" width="6" height="12" fill="#3b82f6"/>
+  </g>
+
+  <text x="56" y="32" font-family="sans-serif" font-size="14" font-weight="700" fill="#ffffff">Tableau Public</text>
+  <text x="165" y="32" font-family="sans-serif" font-size="12" fill="#94a3b8">/ YouTube Channel Intelligence &amp; Audience Engagement Dashboard</text>
+
+  <rect x="810" y="14" width="125" height="26" rx="4" fill="rgba(245,158,11,0.15)" stroke="rgba(245,158,11,0.3)"/>
+  <text x="822" y="31" font-family="sans-serif" font-size="11" font-weight="600" fill="#f59e0b">Interactive BI</text>
+
+  <!-- 4 KPI Metrics -->
+  <g transform="translate(24, 70)">
+    <rect x="0" y="0" width="215" height="80" rx="8" fill="#111624" stroke="rgba(255,255,255,0.07)"/>
+    <text x="16" y="24" font-family="sans-serif" font-size="11" fill="#94a3b8">Total Channel Views</text>
+    <text x="16" y="54" font-family="sans-serif" font-size="24" font-weight="700" fill="#ffffff">18.4M</text>
+    <text x="16" y="70" font-family="sans-serif" font-size="10" fill="#10b981">↑ +32.8% YoY growth</text>
+
+    <rect x="235" y="0" width="215" height="80" rx="8" fill="#111624" stroke="rgba(255,255,255,0.07)"/>
+    <text x="251" y="24" font-family="sans-serif" font-size="11" fill="#94a3b8">Audience Retention</text>
+    <text x="251" y="54" font-family="sans-serif" font-size="24" font-weight="700" fill="#f59e0b">64.2%</text>
+    <text x="251" y="70" font-family="sans-serif" font-size="10" fill="#f59e0b">Avg Duration 9m 14s</text>
+
+    <rect x="470" y="0" width="215" height="80" rx="8" fill="#111624" stroke="rgba(255,255,255,0.07)"/>
+    <text x="486" y="24" font-family="sans-serif" font-size="11" fill="#94a3b8">Subscriber Net Gain</text>
+    <text x="486" y="54" font-family="sans-serif" font-size="24" font-weight="700" fill="#38bdf8">+142,500</text>
+    <text x="486" y="70" font-family="sans-serif" font-size="10" fill="#38bdf8">Conversion rate: 4.8%</text>
+
+    <rect x="705" y="0" width="205" height="80" rx="8" fill="#111624" stroke="rgba(255,255,255,0.07)"/>
+    <text x="721" y="24" font-family="sans-serif" font-size="11" fill="#94a3b8">Engagement Index</text>
+    <text x="721" y="54" font-family="sans-serif" font-size="24" font-weight="700" fill="#ec4899">8.9 / 10</text>
+    <text x="721" y="70" font-family="sans-serif" font-size="10" fill="#ec4899">Likes, Shares, Comments</text>
+  </g>
+
+  <!-- Left: Retention & Views Trend Line Chart -->
+  <g transform="translate(24, 170)">
+    <rect x="0" y="0" width="530" height="230" rx="8" fill="#111624" stroke="rgba(255,255,255,0.08)"/>
+    <text x="20" y="28" font-family="sans-serif" font-size="13" font-weight="600" fill="#ffffff">Views vs. Viewer Retention Curve Over Time</text>
+
+    <!-- Grid lines -->
+    <line x1="40" y1="60" x2="500" y2="60" stroke="rgba(255,255,255,0.05)"/>
+    <line x1="40" y1="100" x2="500" y2="100" stroke="rgba(255,255,255,0.05)"/>
+    <line x1="40" y1="140" x2="500" y2="140" stroke="rgba(255,255,255,0.05)"/>
+    <line x1="40" y1="180" x2="500" y2="180" stroke="rgba(255,255,255,0.05)"/>
+
+    <!-- Curve Area -->
+    <path d="M 40 160 Q 120 70, 200 110 T 360 80 T 500 65 L 500 200 L 40 200 Z" fill="rgba(245,158,11,0.08)"/>
+    <path d="M 40 160 Q 120 70, 200 110 T 360 80 T 500 65" stroke="#f59e0b" stroke-width="3" fill="none"/>
+
+    <!-- Second Line (Engagement) -->
+    <path d="M 40 180 Q 140 150, 220 130 T 380 95 T 500 75" stroke="#38bdf8" stroke-width="2" stroke-dasharray="4,4" fill="none"/>
+
+    <circle cx="200" cy="110" r="5" fill="#f59e0b"/>
+    <circle cx="360" cy="80" r="5" fill="#f59e0b"/>
+    <circle cx="500" cy="65" r="5" fill="#f59e0b"/>
+
+    <text x="40" y="215" font-family="sans-serif" font-size="10" fill="#64748b">00:00</text>
+    <text x="150" y="215" font-family="sans-serif" font-size="10" fill="#64748b">02:30</text>
+    <text x="260" y="215" font-family="sans-serif" font-size="10" fill="#64748b">05:00</text>
+    <text x="370" y="215" font-family="sans-serif" font-size="10" fill="#64748b">07:30</text>
+    <text x="470" y="215" font-family="sans-serif" font-size="10" fill="#64748b">10:00 (End)</text>
+  </g>
+
+  <!-- Right: Category-wise Distribution -->
+  <g transform="translate(575, 170)">
+    <rect x="0" y="0" width="360" height="230" rx="8" fill="#111624" stroke="rgba(255,255,255,0.08)"/>
+    <text x="20" y="28" font-family="sans-serif" font-size="13" font-weight="600" fill="#ffffff">Category Distribution &amp; Watch Time</text>
+
+    <!-- Bar 1 -->
+    <text x="20" y="62" font-family="sans-serif" font-size="11" fill="#cbd5e1">Technology &amp; Programming</text>
+    <text x="300" y="62" font-family="sans-serif" font-size="11" font-weight="600" fill="#f59e0b">42%</text>
+    <rect x="20" y="70" width="320" height="10" rx="5" fill="#1e293b"/>
+    <rect x="20" y="70" width="134" height="10" rx="5" fill="#f59e0b"/>
+
+    <!-- Bar 2 -->
+    <text x="20" y="102" font-family="sans-serif" font-size="11" fill="#cbd5e1">Data Science &amp; AI Tutorials</text>
+    <text x="300" y="102" font-family="sans-serif" font-size="11" font-weight="600" fill="#38bdf8">28%</text>
+    <rect x="20" y="110" width="320" height="10" rx="5" fill="#1e293b"/>
+    <rect x="20" y="110" width="90" height="10" rx="5" fill="#38bdf8"/>
+
+    <!-- Bar 3 -->
+    <text x="20" y="142" font-family="sans-serif" font-size="11" fill="#cbd5e1">Cloud &amp; DevOps Labs</text>
+    <text x="300" y="142" font-family="sans-serif" font-size="11" font-weight="600" fill="#10b981">18%</text>
+    <rect x="20" y="150" width="320" height="10" rx="5" fill="#1e293b"/>
+    <rect x="20" y="150" width="58" height="10" rx="5" fill="#10b981"/>
+
+    <!-- Bar 4 -->
+    <text x="20" y="182" font-family="sans-serif" font-size="11" fill="#cbd5e1">Productivity &amp; Career</text>
+    <text x="300" y="182" font-family="sans-serif" font-size="11" font-weight="600" fill="#a78bfa">12%</text>
+    <rect x="20" y="190" width="320" height="10" rx="5" fill="#1e293b"/>
+    <rect x="20" y="190" width="38" height="10" rx="5" fill="#a78bfa"/>
+  </g>
+
+  <!-- Bottom: Demographic & Geographic Heatmap Strip -->
+  <g transform="translate(24, 420)">
+    <rect x="0" y="0" width="910" height="155" rx="8" fill="#111624" stroke="rgba(255,255,255,0.08)"/>
+    <text x="20" y="28" font-family="sans-serif" font-size="13" font-weight="600" fill="#ffffff">Geographic Distribution &amp; Audience Interaction Heatmap</text>
+
+    <!-- Geographic Cards -->
+    <g transform="translate(20, 45)">
+      <rect x="0" y="0" width="200" height="85" rx="6" fill="#161c2e" stroke="rgba(255,255,255,0.05)"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="11" fill="#94a3b8">Region 1: India</text>
+      <text x="14" y="52" font-family="sans-serif" font-size="18" font-weight="700" fill="#ffffff">8.4M Views</text>
+      <text x="14" y="70" font-family="sans-serif" font-size="10" fill="#10b981">45.6% of total traffic</text>
+
+      <rect x="220" y="0" width="200" height="85" rx="6" fill="#161c2e" stroke="rgba(255,255,255,0.05)"/>
+      <text x="234" y="24" font-family="sans-serif" font-size="11" fill="#94a3b8">Region 2: United States</text>
+      <text x="234" y="52" font-family="sans-serif" font-size="18" font-weight="700" fill="#ffffff">3.9M Views</text>
+      <text x="234" y="70" font-family="sans-serif" font-size="10" fill="#38bdf8">Highest CPM bracket</text>
+
+      <rect x="440" y="0" width="200" height="85" rx="6" fill="#161c2e" stroke="rgba(255,255,255,0.05)"/>
+      <text x="454" y="24" font-family="sans-serif" font-size="11" fill="#94a3b8">Region 3: United Kingdom</text>
+      <text x="454" y="52" font-family="sans-serif" font-size="18" font-weight="700" fill="#ffffff">1.8M Views</text>
+      <text x="454" y="70" font-family="sans-serif" font-size="10" fill="#f59e0b">9.8% of total traffic</text>
+
+      <rect x="660" y="0" width="210" height="85" rx="6" fill="#161c2e" stroke="rgba(255,255,255,0.05)"/>
+      <text x="674" y="24" font-family="sans-serif" font-size="11" fill="#94a3b8">Region 4: Germany / EU</text>
+      <text x="674" y="52" font-family="sans-serif" font-size="18" font-weight="700" fill="#ffffff">1.4M Views</text>
+      <text x="674" y="70" font-family="sans-serif" font-size="10" fill="#a78bfa">7.6% of total traffic</text>
+    </g>
+  </g>
+</svg>

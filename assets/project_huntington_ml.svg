@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" width="960" height="600" fill="none">
+  <defs>
+    <linearGradient id="mlBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070b14"/>
+      <stop offset="100%" stop-color="#04060a"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="960" height="600" fill="url(#mlBg)"/>
+  <rect width="960" height="600" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+
+  <!-- Top Bar -->
+  <rect width="960" height="50" fill="#0d1322" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <text x="24" y="31" font-family="sans-serif" font-size="14" font-weight="700" fill="#38bdf8">Huntington-ML</text>
+  <text x="145" y="31" font-family="sans-serif" font-size="12" fill="#94a3b8">/ Multiclass Disease Stage Prediction &amp; Model Benchmark</text>
+
+  <rect x="790" y="12" width="145" height="26" rx="6" fill="rgba(56,189,248,0.12)" stroke="rgba(56,189,248,0.3)"/>
+  <text x="805" y="29" font-family="sans-serif" font-size="11" font-weight="600" fill="#38bdf8">Best Model: CatBoost</text>
+
+  <!-- 4 Top KPI Cards -->
+  <g transform="translate(24, 70)">
+    <rect x="0" y="0" width="215" height="80" rx="8" fill="#10172a" stroke="rgba(255,255,255,0.07)"/>
+    <text x="16" y="25" font-family="sans-serif" font-size="11" fill="#94a3b8">Overall Accuracy</text>
+    <text x="16" y="55" font-family="sans-serif" font-size="24" font-weight="700" fill="#34d399">95.2%</text>
+    <text x="16" y="70" font-family="sans-serif" font-size="10" fill="#94a3b8">Cross-validated (10-fold)</text>
+
+    <rect x="235" y="0" width="215" height="80" rx="8" fill="#10172a" stroke="rgba(255,255,255,0.07)"/>
+    <text x="251" y="25" font-family="sans-serif" font-size="11" fill="#94a3b8">Macro F1-Score</text>
+    <text x="251" y="55" font-family="sans-serif" font-size="24" font-weight="700" fill="#38bdf8">0.942</text>
+    <text x="251" y="70" font-family="sans-serif" font-size="10" fill="#94a3b8">Balanced across 4 stages</text>
+
+    <rect x="470" y="0" width="215" height="80" rx="8" fill="#10172a" stroke="rgba(255,255,255,0.07)"/>
+    <text x="486" y="25" font-family="sans-serif" font-size="11" fill="#94a3b8">ROC-AUC Score</text>
+    <text x="486" y="55" font-family="sans-serif" font-size="24" font-weight="700" fill="#a78bfa">0.976</text>
+    <text x="486" y="70" font-family="sans-serif" font-size="10" fill="#94a3b8">High discriminatory power</text>
+
+    <rect x="705" y="0" width="205" height="80" rx="8" fill="#10172a" stroke="rgba(255,255,255,0.07)"/>
+    <text x="721" y="25" font-family="sans-serif" font-size="11" fill="#94a3b8">Clinical Features</text>
+    <text x="721" y="55" font-family="sans-serif" font-size="24" font-weight="700" fill="#facc15">48 Param</text>
+    <text x="721" y="70" font-family="sans-serif" font-size="10" fill="#94a3b8">Genetics, Motor, Cognitive</text>
+  </g>
+
+  <!-- Left: Model Comparison Chart -->
+  <g transform="translate(24, 170)">
+    <rect x="0" y="0" width="450" height="395" rx="8" fill="#0f1628" stroke="rgba(255,255,255,0.08)"/>
+    <text x="20" y="30" font-family="sans-serif" font-size="13" font-weight="600" fill="#ffffff">Classification Algorithms Benchmark</text>
+    
+    <!-- Model 1 CatBoost -->
+    <text x="20" y="70" font-family="sans-serif" font-size="11" font-weight="600" fill="#38bdf8">CatBoost Classifier</text>
+    <text x="390" y="70" font-family="sans-serif" font-size="11" font-weight="700" fill="#34d399">95.2%</text>
+    <rect x="20" y="80" width="410" height="12" rx="6" fill="#1e293b"/>
+    <rect x="20" y="80" width="390" height="12" rx="6" fill="#38bdf8"/>
+
+    <!-- Model 2 XGBoost -->
+    <text x="20" y="118" font-family="sans-serif" font-size="11" fill="#e2e8f0">XGBoost Classifier</text>
+    <text x="390" y="118" font-family="sans-serif" font-size="11" fill="#e2e8f0">94.6%</text>
+    <rect x="20" y="128" width="410" height="12" rx="6" fill="#1e293b"/>
+    <rect x="20" y="128" width="387" height="12" rx="6" fill="#60a5fa"/>
+
+    <!-- Model 3 LightGBM -->
+    <text x="20" y="166" font-family="sans-serif" font-size="11" fill="#e2e8f0">LightGBM</text>
+    <text x="390" y="166" font-family="sans-serif" font-size="11" fill="#e2e8f0">93.8%</text>
+    <rect x="20" y="176" width="410" height="12" rx="6" fill="#1e293b"/>
+    <rect x="20" y="176" width="384" height="12" rx="6" fill="#818cf8"/>
+
+    <!-- Model 4 Random Forest -->
+    <text x="20" y="214" font-family="sans-serif" font-size="11" fill="#e2e8f0">Random Forest Classifier</text>
+    <text x="390" y="214" font-family="sans-serif" font-size="11" fill="#e2e8f0">92.4%</text>
+    <rect x="20" y="224" width="410" height="12" rx="6" fill="#1e293b"/>
+    <rect x="20" y="224" width="378" height="12" rx="6" fill="#a78bfa"/>
+
+    <!-- Model 5 Extra Trees -->
+    <text x="20" y="262" font-family="sans-serif" font-size="11" fill="#e2e8f0">Extra Trees Classifier</text>
+    <text x="390" y="262" font-family="sans-serif" font-size="11" fill="#e2e8f0">91.8%</text>
+    <rect x="20" y="272" width="410" height="12" rx="6" fill="#1e293b"/>
+    <rect x="20" y="272" width="376" height="12" rx="6" fill="#c084fc"/>
+
+    <!-- Model 6 SVM -->
+    <text x="20" y="310" font-family="sans-serif" font-size="11" fill="#e2e8f0">Support Vector Machine (SVM)</text>
+    <text x="390" y="310" font-family="sans-serif" font-size="11" fill="#e2e8f0">89.5%</text>
+    <rect x="20" y="320" width="410" height="12" rx="6" fill="#1e293b"/>
+    <rect x="20" y="320" width="366" height="12" rx="6" fill="#64748b"/>
+
+    <!-- Model 7 MLP -->
+    <text x="20" y="358" font-family="sans-serif" font-size="11" fill="#e2e8f0">Multi-Layer Perceptron (Neural Net)</text>
+    <text x="390" y="358" font-family="sans-serif" font-size="11" fill="#e2e8f0">88.2%</text>
+    <rect x="20" y="368" width="410" height="12" rx="6" fill="#1e293b"/>
+    <rect x="20" y="368" width="361" height="12" rx="6" fill="#475569"/>
+  </g>
+
+  <!-- Right Top: Confusion Matrix Heatmap -->
+  <g transform="translate(495, 170)">
+    <rect x="0" y="0" width="440" height="190" rx="8" fill="#0f1628" stroke="rgba(255,255,255,0.08)"/>
+    <text x="20" y="28" font-family="sans-serif" font-size="13" font-weight="600" fill="#ffffff">Multiclass Confusion Matrix (4 Disease Stages)</text>
+
+    <!-- Matrix Grid -->
+    <g transform="translate(35, 45)">
+      <!-- Stage 0 -->
+      <rect x="0" y="0" width="85" height="30" fill="#0369a1"/>
+      <text x="42" y="20" font-family="sans-serif" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">98 (S0)</text>
+      <rect x="90" y="0" width="85" height="30" fill="#0c4a6e"/>
+      <text x="132" y="20" font-family="sans-serif" font-size="11" fill="#93c5fd" text-anchor="middle">2</text>
+      <rect x="180" y="0" width="85" height="30" fill="#111827"/>
+      <text x="222" y="20" font-family="sans-serif" font-size="11" fill="#64748b" text-anchor="middle">0</text>
+      <rect x="270" y="0" width="85" height="30" fill="#111827"/>
+      <text x="312" y="20" font-family="sans-serif" font-size="11" fill="#64748b" text-anchor="middle">0</text>
+
+      <!-- Stage 1 -->
+      <rect x="0" y="34" width="85" height="30" fill="#0c4a6e"/>
+      <text x="42" y="54" font-family="sans-serif" font-size="11" fill="#93c5fd" text-anchor="middle">3</text>
+      <rect x="90" y="34" width="85" height="30" fill="#0284c7"/>
+      <text x="132" y="54" font-family="sans-serif" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">94 (S1)</text>
+      <rect x="180" y="34" width="85" height="30" fill="#0c4a6e"/>
+      <text x="222" y="54" font-family="sans-serif" font-size="11" fill="#93c5fd" text-anchor="middle">3</text>
+      <rect x="270" y="34" width="85" height="30" fill="#111827"/>
+      <text x="312" y="54" font-family="sans-serif" font-size="11" fill="#64748b" text-anchor="middle">0</text>
+
+      <!-- Stage 2 -->
+      <rect x="0" y="68" width="85" height="30" fill="#111827"/>
+      <text x="42" y="88" font-family="sans-serif" font-size="11" fill="#64748b" text-anchor="middle">0</text>
+      <rect x="90" y="68" width="85" height="30" fill="#0c4a6e"/>
+      <text x="132" y="88" font-family="sans-serif" font-size="11" fill="#93c5fd" text-anchor="middle">2</text>
+      <rect x="180" y="68" width="85" height="30" fill="#0284c7"/>
+      <text x="222" y="88" font-family="sans-serif" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">95 (S2)</text>
+      <rect x="270" y="68" width="85" height="30" fill="#0c4a6e"/>
+      <text x="312" y="88" font-family="sans-serif" font-size="11" fill="#93c5fd" text-anchor="middle">3</text>
+
+      <!-- Stage 3 (Advanced) -->
+      <rect x="0" y="102" width="85" height="30" fill="#111827"/>
+      <text x="42" y="122" font-family="sans-serif" font-size="11" fill="#64748b" text-anchor="middle">0</text>
+      <rect x="90" y="102" width="85" height="30" fill="#111827"/>
+      <text x="132" y="122" font-family="sans-serif" font-size="11" fill="#64748b" text-anchor="middle">1</text>
+      <rect x="180" y="102" width="85" height="30" fill="#0c4a6e"/>
+      <text x="222" y="122" font-family="sans-serif" font-size="11" fill="#93c5fd" text-anchor="middle">2</text>
+      <rect x="270" y="102" width="85" height="30" fill="#0369a1"/>
+      <text x="312" y="122" font-family="sans-serif" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">97 (S3)</text>
+    </g>
+  </g>
+
+  <!-- Right Bottom: Feature Importance -->
+  <g transform="translate(495, 375)">
+    <rect x="0" y="0" width="440" height="190" rx="8" fill="#0f1628" stroke="rgba(255,255,255,0.08)"/>
+    <text x="20" y="28" font-family="sans-serif" font-size="13" font-weight="600" fill="#ffffff">Top Predictive Features (SHAP / Feature Importance)</text>
+
+    <text x="20" y="60" font-family="sans-serif" font-size="11" fill="#cbd5e1">1. CAG Repeat Length (Genetic marker)</text>
+    <rect x="20" y="68" width="390" height="8" rx="4" fill="#38bdf8"/>
+
+    <text x="20" y="98" font-family="sans-serif" font-size="11" fill="#cbd5e1">2. Total Functional Capacity (TFC)</text>
+    <rect x="20" y="106" width="340" height="8" rx="4" fill="#60a5fa"/>
+
+    <text x="20" y="136" font-family="sans-serif" font-size="11" fill="#cbd5e1">3. Unified Huntington's Disease Rating (UHDRS Motor)</text>
+    <rect x="20" y="144" width="295" height="8" rx="4" fill="#818cf8"/>
+
+    <text x="20" y="174" font-family="sans-serif" font-size="11" fill="#cbd5e1">4. Symbol Digit Modalities Test (SDMT)</text>
+    <rect x="20" y="178" width="240" height="8" rx="4" fill="#a78bfa"/>
+  </g>
+</svg>

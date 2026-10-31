@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Akash S — Data Science & Analytics Portfolio</title>
+  <meta name="description" content="Portfolio of Akash S — Data Science Undergraduate & Data Science Trainee skilled in Python, SQL, Django, PostgreSQL, Excel, Tableau, and Machine Learning." />
+  <meta name="theme-color" content="#000000" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Cursor Glow -->
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav id="navbar" class="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">Akash S</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#certificates" class="nav-link">Certificates</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="https://github.com/akashs08b" target="_blank" class="nav-icon-link" title="GitHub Profile">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/akash-s-6b0b23319" target="_blank" class="nav-icon-link" title="LinkedIn Profile">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="#contact" class="nav-cta magnetic-btn">Let's Talk</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section id="hero" class="hero">
+    <div class="hero-bg">
+      <canvas id="particleCanvas" class="particle-canvas"></canvas>
+      <div class="gradient-orb orb-1"></div>
+      <div class="gradient-orb orb-2"></div>
+      <div class="gradient-orb orb-3"></div>
+      <div class="grid-overlay"></div>
+    </div>
+    <div class="hero-layout container">
+      <div class="hero-content">
+        <div class="hero-badge reveal">
+          <span class="badge-dot"></span>
+          Data Science Undergraduate &amp; Trainee
+        </div>
+        <h1 class="hero-title reveal-split" data-field="name">
+          Hi, I'm <span class="gradient-text">Akash S</span>
+        </h1>
+        <p class="hero-subtitle reveal">
+          I craft <span id="typingText" class="typing-text"></span><span class="typing-cursor">|</span>
+        </p>
+        <p class="hero-description reveal" data-field="bio">
+          Data Science undergraduate who has independently built and deployed full-stack applications using Python, Django, and PostgreSQL. Strong foundation in SQL, data cleaning, visualization, and extracting actionable insights.
+        </p>
+        <div class="hero-actions reveal">
+          <a href="#projects" class="btn btn-primary magnetic-btn">
+            <span>View My Projects</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V8H8"/></svg>
+          </a>
+          <a href="#certificates" class="btn btn-outline magnetic-btn">
+            <span>Certificates &amp; Credentials</span>
+          </a>
+        </div>
+        <div class="hero-stats reveal">
+          <div class="stat">
+            <span class="stat-number" data-count="12">0</span><span class="stat-plus">+</span>
+            <span class="stat-label">Certifications</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-number" data-count="4">0</span><span class="stat-plus"></span>
+            <span class="stat-label">Projects &amp; Apps</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-number" data-count="12">0</span><span class="stat-plus">+</span>
+            <span class="stat-label">Tech Skills</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Portrait Visual Showcase -->
+      <div class="hero-portrait-col reveal">
+        <div class="hero-portrait-container">
+          <div class="portrait-glow-ring"></div>
+          <div class="portrait-card">
+            <img src="assets/akash_portrait.jpg" alt="Akash S — Studio Portrait" class="hero-portrait-image" id="heroPortraitImg" />
+            <div class="portrait-inner-overlay"></div>
+          </div>
+          <!-- Floating Badge 1: Full-Stack -->
+          <div class="float-badge badge-role">
+            <div class="badge-icon-wrap">⚡</div>
+            <div class="badge-content">
+              <span class="badge-sub">Full-Stack Tech</span>
+              <span class="badge-main">Python &amp; Django</span>
+            </div>
+          </div>
+          <!-- Floating Badge 2: Academic -->
+          <div class="float-badge badge-academic">
+            <div class="badge-icon-wrap">🎓</div>
+            <div class="badge-content">
+              <span class="badge-sub">BVoc Data Science</span>
+              <span class="badge-main">St Thomas College</span>
+            </div>
+          </div>
+          <!-- Floating Status: Open for Roles -->
+          <div class="hero-status-pill">
+            <span class="pulse-indicator"></span>
+            <span>Open to Opportunities</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="#about" class="scroll-indicator" aria-label="Scroll down">
+      <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+    </a>
+  </section>
+
+  <!-- ========== ABOUT ========== -->
+  <section id="about" class="section about">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">01 — About Me</span>
+        <h2 class="section-title">Passionate about <span class="gradient-text">data science</span> &amp; full-stack software</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-bio reveal">
+          <p class="about-text" data-field="about1">
+            Data Science undergraduate who has independently built and deployed two full-stack applications — a role-based gas cylinder booking platform (<strong class="highlight-text">Smart Cylinder</strong>) and a command-line event management system (<strong class="highlight-text">CodeCorner</strong>) — using Python, Django, and PostgreSQL.
+          </p>
+          <p class="about-text" data-field="about2">
+            Strong foundation in SQL, data cleaning, exploratory analysis, and visualization (Python, Tableau), with hands-on experience turning raw requirements into working, end-to-end software.
+          </p>
+          <div class="about-social-links">
+            <a href="https://github.com/akashs08b" target="_blank" class="social-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              GitHub Profile
+            </a>
+            <a href="https://www.linkedin.com/in/akash-s-6b0b23319" target="_blank" class="social-btn linkedin-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              LinkedIn Profile
+            </a>
+          </div>
+        </div>
+
+        <div class="about-highlights reveal">
+          <div class="highlight">
+            <div class="highlight-icon">📊</div>
+            <div>
+              <h4>Data Cleaning &amp; Analytics</h4>
+              <p>Transforming complex, raw datasets into analysis-ready insights</p>
+            </div>
+          </div>
+          <div class="highlight">
+            <div class="highlight-icon">⚡</div>
+            <div>
+              <h4>Full-Stack Python &amp; Django</h4>
+              <p>Designing backend architecture, relational schemas, &amp; role-based portals</p>
+            </div>
+          </div>
+          <div class="highlight">
+            <div class="highlight-icon">🗄️</div>
+            <div>
+              <h4>PostgreSQL &amp; Database Design</h4>
+              <p>Crafting relational data models and migrating document data layer to PostgreSQL</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SKILLS ========== -->
+  <section id="skills" class="section skills">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">02 — Skills</span>
+        <h2 class="section-title">Technical <span class="gradient-text">skills &amp; competencies</span></h2>
+      </div>
+      <div class="skills-grid" id="skillsGrid">
+
+        <div class="skill-category reveal">
+          <div class="skill-category-header">
+            <div class="skill-icon-wrap">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <h3>Programming Languages</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag" data-level="expert">Python</span>
+            <span class="skill-tag" data-level="expert">SQL</span>
+            <span class="skill-tag" data-level="advanced">Java</span>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar" data-width="92" data-label="Python"></div>
+            <div class="skill-bar" data-width="88" data-label="SQL"></div>
+            <div class="skill-bar" data-width="75" data-label="Java"></div>
+          </div>
+        </div>
+
+        <div class="skill-category reveal">
+          <div class="skill-category-header">
+            <div class="skill-icon-wrap">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+            </div>
+            <h3>Frameworks &amp; Libraries</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag" data-level="expert">Django</span>
+            <span class="skill-tag" data-level="advanced">Django REST Framework</span>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar" data-width="85" data-label="Django"></div>
+            <div class="skill-bar" data-width="80" data-label="Django REST"></div>
+          </div>
+        </div>
+
+        <div class="skill-category reveal">
+          <div class="skill-category-header">
+            <div class="skill-icon-wrap">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+            </div>
+            <h3>Databases</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag" data-level="expert">PostgreSQL</span>
+            <span class="skill-tag" data-level="advanced">MySQL</span>
+            <span class="skill-tag" data-level="intermediate">MongoDB Migration</span>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar" data-width="90" data-label="PostgreSQL"></div>
+            <div class="skill-bar" data-width="82" data-label="MySQL"></div>
+          </div>
+        </div>
+
+        <div class="skill-category reveal">
+          <div class="skill-category-header">
+            <div class="skill-icon-wrap">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            </div>
+            <h3>Data &amp; Visualization</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag" data-level="expert">Excel</span>
+            <span class="skill-tag" data-level="expert">Tableau</span>
+            <span class="skill-tag" data-level="advanced">Machine Learning</span>
+            <span class="skill-tag" data-level="advanced">Data Cleaning</span>
+          </div>
+          <div class="skill-bar-wrap">
+            <div class="skill-bar" data-width="88" data-label="Tableau"></div>
+            <div class="skill-bar" data-width="90" data-label="Excel"></div>
+            <div class="skill-bar" data-width="75" data-label="Machine Learning"></div>
+          </div>
+        </div>
+
+        <div class="skill-category reveal">
+          <div class="skill-category-header">
+            <div class="skill-icon-wrap">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+            </div>
+            <h3>Web Technologies &amp; Tools</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag" data-level="advanced">HTML</span>
+            <span class="skill-tag" data-level="advanced">CSS</span>
+            <span class="skill-tag" data-level="advanced">JavaScript</span>
+            <span class="skill-tag" data-level="expert">Git</span>
+            <span class="skill-tag" data-level="expert">GitHub</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CERTIFICATES ========== -->
+  <section id="certificates" class="section certificates">
+    <div class="container">
+      <div class="section-header cert-section-header reveal">
+        <div class="cert-header-left">
+          <span class="section-tag">03 — Certificates</span>
+          <h2 class="section-title">Verified <span class="gradient-text">certifications &amp; credentials</span></h2>
+          <p class="section-description">Click any certificate credential to inspect in high resolution or download the certificate.</p>
+        </div>
+      </div>
+      <div class="certificates-photo-grid" id="certificatesGrid">
+
+        <!-- Cert: Data Science Internship Certification -->
+        <div class="cert-photo-card reveal" onclick="openCertModal('assets/cert_jyesta_internship.jpg', 'Data Science Internship Certification', 'JYESTA', 'January 2026')">
+          <div class="cert-card-shine"></div>
+          <div class="cert-img-container">
+            <img src="assets/cert_jyesta_internship.jpg" alt="Data Science Internship Certification — JYESTA Certificate" class="cert-img" loading="lazy" />
+            <div class="cert-hover-overlay">
+              <div class="zoom-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+              </div>
+              <span>Click to view certificate</span>
+            </div>
+          </div>
+          <div class="cert-details">
+            <div class="cert-header-meta">
+              <span class="cert-issuer-badge jyesta-badge">JYESTA</span>
+              <span class="cert-date-text">Jan 2026</span>
+            </div>
+            <h3 class="cert-title-text">Data Science Internship Certification</h3>
+            <p class="cert-org">Issued by JYESTA</p>
+            <div class="cert-view-btn">
+              <span>View Full Photo</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cert: Certificate Program in AWS Cloud Architect -->
+        <div class="cert-photo-card reveal" onclick="openCertModal('assets/cert_aws_cloud_architect.jpg', 'Certificate Program in AWS Cloud Architect', 'AWS / St Thomas', '2024 — 2025')">
+          <div class="cert-card-shine"></div>
+          <div class="cert-img-container">
+            <img src="assets/cert_aws_cloud_architect.jpg" alt="Certificate Program in AWS Cloud Architect — AWS / St Thomas Certificate" class="cert-img" loading="lazy" />
+            <div class="cert-hover-overlay">
+              <div class="zoom-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+              </div>
+              <span>Click to view certificate</span>
+            </div>
+          </div>
+          <div class="cert-details">
+            <div class="cert-header-meta">
+              <span class="cert-issuer-badge aws-badge">AWS / St Thomas</span>
+              <span class="cert-date-text">2024 — 2025</span>
+            </div>
+            <h3 class="cert-title-text">Certificate Program in AWS Cloud Architect</h3>
+            <p class="cert-org">Issued by St Thomas College (Autonomous)</p>
+            <div class="cert-view-btn">
+              <span>View Full Photo</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cert: SQL (Basic) -->
+        <div class="cert-photo-card reveal" onclick="openCertModal('assets/cert_hackerrank_sql.jpg', 'SQL (Basic)', 'HackerRank', 'June 2025')">
+          <div class="cert-card-shine"></div>
+          <div class="cert-img-container">
+            <img src="assets/cert_hackerrank_sql.jpg" alt="SQL (Basic) — HackerRank Certificate" class="cert-img" loading="lazy" />
+            <div class="cert-hover-overlay">
+              <div class="zoom-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+              </div>
+              <span>Click to view certificate</span>
+            </div>
+          </div>
+          <div class="cert-details">
+            <div class="cert-header-meta">
+              <span class="cert-issuer-badge hackerrank-badge">HackerRank</span>
+              <span class="cert-date-text">Jun 2025</span>
+            </div>
+            <h3 class="cert-title-text">SQL (Basic)</h3>
+            <p class="cert-org">Issued by HackerRank</p>
+            <div class="cert-view-btn">
+              <span>View Full Photo</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cert: Data Visualization with Python -->
+        <div class="cert-photo-card reveal" onclick="openCertModal('assets/cert_ibm_data_vis.jpg', 'Data Visualization with Python', 'IBM', 'October 2024')">
+          <div class="cert-card-shine"></div>
+          <div class="cert-img-container">
+            <img src="assets/cert_ibm_data_vis.jpg" alt="Data Visualization with Python — IBM Certificate" class="cert-img" loading="lazy" />
+            <div class="cert-hover-overlay">
+              <div class="zoom-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+              </div>
+              <span>Click to view certificate</span>
+            </div>
+          </div>
+          <div class="cert-details">
+            <div class="cert-header-meta">
+              <span class="cert-issuer-badge ibm-badge">IBM</span>
+              <span class="cert-date-text">Oct 2024</span>
+            </div>
+            <h3 class="cert-title-text">Data Visualization with Python</h3>
+            <p class="cert-org">Issued by IBM</p>
+            <div class="cert-view-btn">
+              <span>View Full Photo</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cert: Data Science 101 -->
+        <div class="cert-photo-card reveal" onclick="openCertModal('assets/cert_ibm_data_science.jpg', 'Data Science 101', 'IBM', 'July 2024')">
+          <div class="cert-card-shine"></div>
+          <div class="cert-img-container">
+            <img src="assets/cert_ibm_data_science.jpg" alt="Data Science 101 — IBM Certificate" class="cert-img" loading="lazy" />
+            <div class="cert-hover-overlay">
+              <div class="zoom-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+              </div>
+              <span>Click to view certificate</span>
+            </div>
+          </div>
+          <div class="cert-details">
+            <div class="cert-header-meta">
+              <span class="cert-issuer-badge ibm-badge">IBM</span>
+              <span class="cert-date-text">Jul 2024</span>
+            </div>
+            <h3 class="cert-title-text">Data Science 101</h3>
+            <p class="cert-org">Issued by IBM</p>
+            <div class="cert-view-btn">
+              <span>View Full Photo</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cert: Data Science Methodology -->
+        <div class="cert-photo-card reveal" onclick="openCertModal('assets/cert_ibm_data_science_methodology.jpg', 'Data Science Methodology', 'IBM', 'July 2024')">
+          <div class="cert-card-shine"></div>
+          <div class="cert-img-container">
+            <img src="assets/cert_ibm_data_science_methodology.jpg" alt="Data Science Methodology — IBM Certificate" class="cert-img" loading="lazy" />
+            <div class="cert-hover-overlay">
+              <div class="zoom-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+              </div>
+              <span>Click to view certificate</span>
+            </div>
+          </div>
+          <div class="cert-details">
+            <div class="cert-header-meta">
+              <span class="cert-issuer-badge ibm-badge">IBM</span>
+              <span class="cert-date-text">Jul 2024</span>
+            </div>
+            <h3 class="cert-title-text">Data Science Methodology</h3>
+            <p class="cert-org">Issued by IBM</p>
+            <div class="cert-view-btn">
+              <span>View Full Photo</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cert: SQL and Relational Databases 101 -->
+        <div class="cert-photo-card reveal" onclick="openCertModal('assets/cert_ibm_sql_relational_db.jpg', 'SQL and Relational Databases 101', 'IBM', 'December 2024')">
+          <div class="cert-card-shine"></div>
+          <div class="cert-img-container">
+            <img src="assets/cert_ibm_sql_relational_db.jpg" alt="SQL and Relational Databases 101 — IBM Certificate" class="cert-img" loading="lazy" />
+            <div class="cert-hover-overlay">
+              <div class="zoom-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+              </div>
+              <span>Click to view certificate</span>
+            </div>
+          </div>
+          <div class="cert-details">
+            <div class="cert-header-meta">
+              <span class="cert-issuer-badge ibm-badge">IBM</span>
+              <span class="cert-date-text">Dec 2024</span>
+            </div>
+            <h3 class="cert-title-text">SQL and Relational Databases 101</h3>
+            <p class="cert-org">Issued by IBM</p>
+            <div class="cert-view-btn">
+              <span>View Full Photo</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cert: NoSQL and DBaaS 101 -->
+        <div class="cert-photo-card reveal" onclick="openCertModal('assets/cert_ibm_nosql_dbaas.jpg', 'NoSQL and DBaaS 101', 'IBM', 'December 2024')">
+          <div class="cert-card-shine"></div>
+          <div class="cert-img-container">
+            <img src="assets/cert_ibm_nosql_dbaas.jpg" alt="NoSQL and DBaaS 101 — IBM Certificate" class="cert-img" loading="lazy" />
+            <div class="cert-hover-overlay">
+              <div class="zoom-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+              </div>
+              <span>Click to view certificate</span>
+            </div>
+          </div>
+          <div class="cert-details">
+            <div class="cert-header-meta">
+              <span class="cert-issuer-badge ibm-badge">IBM</span>
+              <span class="cert-date-text">Dec 2024</span>
+            </div>
+            <h3 class="cert-title-text">NoSQL and DBaaS 101</h3>
+            <p class="cert-org">Issued by IBM</p>
+            <div class="cert-view-btn">
+              <span>View Full Photo</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cert: Containers, Kubernetes & OpenShift V2 -->
+        <div class="cert-photo-card reveal" onclick="openCertModal('assets/cert_ibm_containers_k8s.jpg', 'Containers, Kubernetes & OpenShift V2', 'IBM', 'December 2024')">
+          <div class="cert-card-shine"></div>
+          <div class="cert-img-container">
+            <img src="assets/cert_ibm_containers_k8s.jpg" alt="Containers, Kubernetes & OpenShift V2 — IBM Certificate" class="cert-img" loading="lazy" />
+            <div class="cert-hover-overlay">
+              <div class="zoom-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+              </div>
+              <span>Click to view certificate</span>
+            </div>
+          </div>
+          <div class="cert-details">
+            <div class="cert-header-meta">
+              <span class="cert-issuer-badge ibm-badge">IBM</span>
+              <span class="cert-date-text">Dec 2024</span>
+            </div>
+            <h3 class="cert-title-text">Containers, Kubernetes & OpenShift V2</h3>
+            <p class="cert-org">Issued by IBM</p>
+            <div class="cert-view-btn">
+              <span>View Full Photo</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cert: Introduction to Cloud -->
+        <div class="cert-photo-card reveal" onclick="openCertModal('assets/cert_ibm_intro_cloud.jpg', 'Introduction to Cloud', 'IBM', 'July 2024')">
+          <div class="cert-card-shine"></div>
+          <div class="cert-img-container">
+            <img src="assets/cert_ibm_intro_cloud.jpg" alt="Introduction to Cloud — IBM Certificate" class="cert-img" loading="lazy" />
+            <div class="cert-hover-overlay">
+              <div class="zoom-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+              </div>
+              <span>Click to view certificate</span>
+            </div>
+          </div>
+          <div class="cert-details">
+            <div class="cert-header-meta">
+              <span class="cert-issuer-badge ibm-badge">IBM</span>
+              <span class="cert-date-text">Jul 2024</span>
+            </div>
+            <h3 class="cert-title-text">Introduction to Cloud</h3>
+            <p class="cert-org">Issued by IBM</p>
+            <div class="cert-view-btn">
+              <span>View Full Photo</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cert: Introduction to Open Source -->
+        <div class="cert-photo-card reveal" onclick="openCertModal('assets/cert_ibm_intro_open_source.jpg', 'Introduction to Open Source', 'IBM', 'December 2024')">
+          <div class="cert-card-shine"></div>
+          <div class="cert-img-container">
+            <img src="assets/cert_ibm_intro_open_source.jpg" alt="Introduction to Open Source — IBM Certificate" class="cert-img" loading="lazy" />
+            <div class="cert-hover-overlay">
+              <div class="zoom-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+              </div>
+              <span>Click to view certificate</span>
+            </div>
+          </div>
+          <div class="cert-details">
+            <div class="cert-header-meta">
+              <span class="cert-issuer-badge ibm-badge">IBM</span>
+              <span class="cert-date-text">Dec 2024</span>
+            </div>
+            <h3 class="cert-title-text">Introduction to Open Source</h3>
+            <p class="cert-org">Issued by IBM</p>
+            <div class="cert-view-btn">
+              <span>View Full Photo</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cert: Data Privacy Fundamentals -->
+        <div class="cert-photo-card reveal" onclick="openCertModal('assets/cert_ibm_data_privacy.jpg', 'Data Privacy Fundamentals', 'IBM', 'August 2024')">
+          <div class="cert-card-shine"></div>
+          <div class="cert-img-container">
+            <img src="assets/cert_ibm_data_privacy.jpg" alt="Data Privacy Fundamentals — IBM Certificate" class="cert-img" loading="lazy" />
+            <div class="cert-hover-overlay">
+              <div class="zoom-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+              </div>
+              <span>Click to view certificate</span>
+            </div>
+          </div>
+          <div class="cert-details">
+            <div class="cert-header-meta">
+              <span class="cert-issuer-badge ibm-badge">IBM</span>
+              <span class="cert-date-text">Aug 2024</span>
+            </div>
+            <h3 class="cert-title-text">Data Privacy Fundamentals</h3>
+            <p class="cert-org">Issued by IBM / Fireside Analytics</p>
+            <div class="cert-view-btn">
+              <span>View Full Photo</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PROJECTS ========== -->
+  <section id="projects" class="section projects">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">04 — Projects</span>
+        <h2 class="section-title">Featured <span class="gradient-text">software &amp; applications</span></h2>
+        <p class="section-description">Full-stack applications, machine learning systems, and interactive analytics dashboards built independently.</p>
+      </div>
+      <div class="projects-grid" id="projectsGrid">
+
+        <!-- Project 1: Smart Cylinder -->
+        <article class="project-card project-card-featured reveal" id="project-1">
+          <div class="project-card-shine"></div>
+          <div class="project-image">
+            <img src="assets/project_smartcylinder.svg" alt="SmartCylinder Gas Delivery Platform Interface Preview" class="project-img" loading="lazy" />
+            <div class="project-overlay">
+              <a href="https://github.com/akashs08b/Smart-Cylinder" target="_blank" class="project-link" aria-label="View live project demo">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                <span>Live Demo</span>
+              </a>
+              <a href="https://github.com/akashs08b/Smart-Cylinder" target="_blank" class="project-link" aria-label="View GitHub repository">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                <span>GitHub Repo</span>
+              </a>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-tags">
+              <span>Django</span><span>Python</span><span>PostgreSQL</span><span>HTML</span><span>CSS</span><span>JavaScript</span>
+            </div>
+            <h3 class="project-title">SmartCylinder — Gas Delivery Management Platform</h3>
+            <p class="project-description">
+              Built a full booking-to-delivery platform with three role-based dashboards (Admin, Staff, Customer), supporting online booking, real-time delivery tracking, and automated notifications. Designed the PostgreSQL schema and backend logic to support booking history and operational analytics used to track delivery efficiency.
+            </p>
+            <div class="project-action-bar">
+              <a href="https://github.com/akashs08b/Smart-Cylinder" target="_blank" class="project-btn-primary">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                View Code on GitHub
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2: CodeCorner -->
+        <article class="project-card project-card-featured reveal" id="project-2">
+          <div class="project-card-shine"></div>
+          <div class="project-image">
+            <img src="assets/project_codecorner.svg" alt="CodeCorner CLI Event Management Interface Preview" class="project-img" loading="lazy" />
+            <div class="project-overlay">
+              <a href="https://github.com/akashs08b/CodeCorner" target="_blank" class="project-link" aria-label="View live project demo">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                <span>Live Demo</span>
+              </a>
+              <a href="https://github.com/akashs08b/CodeCorner" target="_blank" class="project-link" aria-label="View GitHub repository">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                <span>GitHub Repo</span>
+              </a>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-tags">
+              <span>Python</span><span>PostgreSQL</span><span>CLI</span><span>MongoDB Migration</span>
+            </div>
+            <h3 class="project-title">CodeCorner — CLI Event Management System</h3>
+            <p class="project-description">
+              Developed a command-line application for managing coding competitions and hackathons, with separate Admin and User modules for event creation, registration, and participation. Migrated the data layer from MongoDB to PostgreSQL, redesigning the schema to support relational queries without losing existing functionality.
+            </p>
+            <div class="project-action-bar">
+              <a href="https://github.com/akashs08b/CodeCorner" target="_blank" class="project-btn-primary">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                View Code on GitHub
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3: Huntington’s Disease Stage Prediction -->
+        <article class="project-card project-card-featured reveal" id="project-3">
+          <div class="project-card-shine"></div>
+          <div class="project-image">
+            <img src="assets/project_huntington_ml.svg" alt="Huntington Disease ML Classification Platform Interface Preview" class="project-img" loading="lazy" />
+            <div class="project-overlay">
+              <a href="https://github.com/akashs08b" target="_blank" class="project-link" aria-label="View GitHub repository">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                <span>GitHub Repo</span>
+              </a>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-tags">
+              <span>Python</span><span>Machine Learning</span><span>CatBoost</span><span>XGBoost</span><span>LightGBM</span><span>Random Forest</span><span>SVM</span><span>MLP</span>
+            </div>
+            <h3 class="project-title">Huntington’s Disease Stage Prediction Using Machine Learning</h3>
+            <p class="project-description">
+              Developed a multiclass machine learning system for Huntington’s disease stage prediction using clinical, genetic, and patient-level features. Implemented data preprocessing, feature engineering, categorical encoding, and feature selection, followed by training and comparison of multiple classification algorithms, including CatBoost, XGBoost, LightGBM, Random Forest, Extra Trees, SVM, and MLP. Evaluated model performance using accuracy, precision, recall, F1-score, and confusion matrix to identify the most effective predictive approach.
+            </p>
+            <div class="project-action-bar">
+              <a href="https://github.com/akashs08b" target="_blank" class="project-btn-primary">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                View ML Project on GitHub
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 4: YouTube Channel Analytics Dashboard -->
+        <article class="project-card project-card-featured reveal" id="project-4">
+          <div class="project-card-shine"></div>
+          <div class="project-image">
+            <img src="assets/project_youtube_analytics.svg" alt="YouTube Channel Analytics Tableau Dashboard Interface Preview" class="project-img" loading="lazy" />
+            <div class="project-overlay">
+              <a href="https://github.com/akashs08b" target="_blank" class="project-link" aria-label="View Project">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                <span>Tableau Project</span>
+              </a>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-tags">
+              <span>Tableau</span><span>Data Analytics</span><span>Data Visualization</span><span>Audience Engagement</span><span>Performance Metrics</span>
+            </div>
+            <h3 class="project-title">YouTube Channel Analytics Dashboard | Tableau</h3>
+            <p class="project-description">
+              Developed an interactive Tableau dashboard to analyze YouTube channel performance, audience engagement, content categories, geographic distribution, and key performance metrics. Created dynamic visualizations to identify top-performing channels, engagement trends, category-wise follower distribution, and audience interaction patterns, enabling clear and data-driven insights from complex datasets.
+            </p>
+            <div class="project-action-bar">
+              <a href="https://www.linkedin.com/in/akash-s-6b0b23319" target="_blank" class="project-btn-primary">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                View on LinkedIn
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== EDUCATION ========== -->
+  <section id="education" class="section education">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">05 — Education</span>
+        <h2 class="section-title">Academic <span class="gradient-text">background</span></h2>
+      </div>
+      <div class="education-card reveal" id="educationContainer">
+        <div class="edu-icon-wrap">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 4 3 6 3s6-2 6-3v-5"/></svg>
+        </div>
+        <div class="edu-content">
+          <div class="edu-period">2024 — 2027</div>
+          <h3>BVoc Data Science (Undergraduate)</h3>
+          <p class="edu-institution">St Thomas College (Autonomous), Thrissur, India</p>
+          <p class="edu-description">Pursuing a Bachelor of Vocation in Data Science, mastering Python programming, statistical modeling, database administration, data cleaning, and business intelligence techniques.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== EXPERIENCE ========== -->
+  <section id="experience" class="section experience">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">06 — Experience</span>
+        <h2 class="section-title">Work <span class="gradient-text">experience &amp; training</span></h2>
+      </div>
+      <div class="timeline" id="experienceTimeline">
+        <div class="timeline-item reveal">
+          <div class="timeline-marker">
+            <div class="timeline-marker-pulse"></div>
+          </div>
+          <div class="timeline-card">
+            <div class="timeline-card-shine"></div>
+            <div class="timeline-period">2025 — 2026</div>
+            <h3>Data Science Trainee</h3>
+            <p class="timeline-company">JYESTAAcademy</p>
+            <p>Completed an applied data science training program covering data cleaning, exploratory analysis, and visualization, with hands-on exercises on real datasets.</p>
+            <div class="timeline-tags">
+              <span>Python</span><span>Data Cleaning</span><span>Exploratory Data Analysis</span><span>Visualization</span><span>Real Datasets</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT ========== -->
+  <section id="contact" class="section contact">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">07 — Contact</span>
+        <h2 class="section-title">Let's <span class="gradient-text">connect</span></h2>
+        <p class="section-description">Open to Data Science, Data Analyst, and Python Backend opportunities. Feel free to reach out directly.</p>
+      </div>
+      <div class="contact-grid">
+        <form class="contact-form reveal" id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Your name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="you@example.com" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="Project or job inquiry" />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full magnetic-btn" id="submitBtn">
+            <span>Send Message</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </form>
+        <div class="contact-info reveal">
+          <div class="contact-card">
+            <div class="contact-card-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <h4>Email</h4>
+              <a href="mailto:akashs08b@gmail.com" data-field="email">akashs08b@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div>
+              <h4>Phone</h4>
+              <a href="tel:+919400696193" data-field="phone">+91-9400696193</a>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <h4>Location</h4>
+              <p data-field="location">Vadakkanchery, Palakkad, Kerala, India 678686</p>
+            </div>
+          </div>
+          <div class="contact-socials">
+            <a href="https://www.linkedin.com/in/akash-s-6b0b23319" target="_blank" class="social-link" aria-label="LinkedIn" data-field="linkedin" title="LinkedIn Profile">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="https://github.com/akashs08b" target="_blank" class="social-link" aria-label="GitHub" data-field="github" title="GitHub Profile">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <a href="#hero" class="nav-logo">Akash S</a>
+        <p class="footer-text">&copy; 2026 Akash S. All rights reserved. Built for Data Science &amp; Full-Stack Engineering.</p>
+        <a href="admin.html" class="admin-link" title="Admin Panel">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ========== CERTIFICATE LIGHTBOX MODAL ========== -->
+  <div class="cert-modal" id="certModal" aria-hidden="true">
+    <div class="cert-modal-backdrop" onclick="closeCertModal()"></div>
+    <div class="cert-modal-content">
+      <button class="cert-modal-close" onclick="closeCertModal()" aria-label="Close preview">&times;</button>
+      <div class="cert-modal-body">
+        <img id="certModalImg" src="" alt="Certificate Preview" />
+      </div>
+      <div class="cert-modal-footer">
+        <div class="cert-modal-footer-info">
+          <h4 id="certModalTitle">Certificate Title</h4>
+          <div class="cert-modal-meta">
+            <span id="certModalIssuer" class="modal-badge">Issuer</span>
+            <span id="certModalDate" class="modal-date">Date</span>
+          </div>
+        </div>
+        <div class="cert-modal-footer-actions">
+          <a id="certModalDownloadBtn" href="#" download="certificate.png" class="btn btn-outline btn-sm modal-dl-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            <span>Download</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" width="960" height="600" fill="none">
+  <defs>
+    <linearGradient id="termBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0a0f"/>
+      <stop offset="100%" stop-color="#050508"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="960" height="600" fill="url(#termBg)"/>
+  <rect width="960" height="600" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+
+  <!-- Terminal Window Bar -->
+  <rect width="960" height="48" fill="#12121a" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <circle cx="25" cy="24" r="6" fill="#ff5f56"/>
+  <circle cx="45" cy="24" r="6" fill="#ffbd2e"/>
+  <circle cx="65" cy="24" r="6" fill="#27c93f"/>
+
+  <text x="480" y="29" font-family="'JetBrains Mono', monospace" font-size="12" fill="#a1a1aa" text-anchor="middle">akash@stthomas: ~/projects/codecorner (main) — CLI &amp; PostgreSQL Engine</text>
+
+  <!-- Left: Interactive Terminal Screen -->
+  <g transform="translate(30, 70)">
+    <rect x="0" y="0" width="560" height="495" rx="8" fill="#07070b" stroke="rgba(255,255,255,0.06)"/>
+    
+    <!-- Terminal Lines -->
+    <text x="24" y="36" font-family="'JetBrains Mono', monospace" font-size="12" fill="#22c55e">$ python codecorner.py --migrate-schema --source=mongodb --target=postgres</text>
+    <text x="24" y="60" font-family="'JetBrains Mono', monospace" font-size="12" fill="#a1a1aa">[INFO] Connecting to legacy MongoDB cluster (mongodb://localhost:27017)...</text>
+    <text x="24" y="80" font-family="'JetBrains Mono', monospace" font-size="12" fill="#38bdf8">[SUCCESS] Extracted 4,280 participants &amp; 38 hackathon events</text>
+    <text x="24" y="100" font-family="'JetBrains Mono', monospace" font-size="12" fill="#a1a1aa">[INFO] Normalizing schema into 3NF relational tables (PostgreSQL 16)...</text>
+    <text x="24" y="120" font-family="'JetBrains Mono', monospace" font-size="12" fill="#22c55e">✓ Schema migration completed without loss of integrity (0 foreign key errors)</text>
+    
+    <text x="24" y="160" font-family="'JetBrains Mono', monospace" font-size="12" fill="#22c55e">$ python codecorner.py --run-portal --role=ADMIN</text>
+    
+    <!-- ASCII Table -->
+    <text x="24" y="195" font-family="'JetBrains Mono', monospace" font-size="11" fill="#facc15">╔══════════════════════════════════════════════════════════════════════════╗</text>
+    <text x="24" y="215" font-family="'JetBrains Mono', monospace" font-size="11" fill="#facc15">║                CODECORNER — HACKATHON &amp; EVENT PORTAL                    ║</text>
+    <text x="24" y="235" font-family="'JetBrains Mono', monospace" font-size="11" fill="#facc15">╠══════════╦═════════════════════════════╦══════════════╦══════════════════╣</text>
+    <text x="24" y="255" font-family="'JetBrains Mono', monospace" font-size="11" fill="#e4e4e7">║ EVENT ID ║ EVENT TITLE                 ║ TEAMS REG.   ║ STATUS           ║</text>
+    <text x="24" y="275" font-family="'JetBrains Mono', monospace" font-size="11" fill="#a1a1aa">╠══════════╬═════════════════════════════╬══════════════╬══════════════════╣</text>
+    <text x="24" y="295" font-family="'JetBrains Mono', monospace" font-size="11" fill="#93c5fd">║ #EVT-101 ║ AI Innovation Sprint 2026   ║ 128 Teams    ║ ● ACTIVE LIVE    ║</text>
+    <text x="24" y="315" font-family="'JetBrains Mono', monospace" font-size="11" fill="#93c5fd">║ #EVT-102 ║ National Algo Challenge     ║ 84 Teams     ║ ● REGISTRATION   ║</text>
+    <text x="24" y="335" font-family="'JetBrains Mono', monospace" font-size="11" fill="#93c5fd">║ #EVT-103 ║ Cloud Architecture Wars     ║ 62 Teams     ║ ○ COMPLETED      ║</text>
+    <text x="24" y="355" font-family="'JetBrains Mono', monospace" font-size="11" fill="#facc15">╚══════════╩═════════════════════════════╩══════════════╩══════════════════╝</text>
+
+    <text x="24" y="395" font-family="'JetBrains Mono', monospace" font-size="12" fill="#22c55e">Select Option [1] Create Event [2] Manage Registrations [3] View Stats: 3</text>
+    <text x="24" y="420" font-family="'JetBrains Mono', monospace" font-size="12" fill="#38bdf8">&gt;&gt; Live Query Execution Time: 4.2ms | PostgreSQL Connection Pool: 10/10 OK</text>
+    <text x="24" y="445" font-family="'JetBrains Mono', monospace" font-size="12" fill="#e4e4e7">&gt;&gt; Total Active Hackers in Queue: 890</text>
+    
+    <text x="24" y="475" font-family="'JetBrains Mono', monospace" font-size="12" fill="#22c55e">$ <tspan fill="#ffffff">_</tspan></text>
+  </g>
+
+  <!-- Right: Architecture & Relational Schema Box -->
+  <g transform="translate(610, 70)">
+    <rect x="0" y="0" width="320" height="235" rx="8" fill="#0d111c" stroke="rgba(255,255,255,0.08)"/>
+    <text x="20" y="30" font-family="sans-serif" font-size="13" font-weight="600" fill="#f8fafc">PostgreSQL Database Schema</text>
+    <text x="20" y="50" font-family="sans-serif" font-size="11" fill="#94a3b8">Migrated from NoSQL MongoDB documents</text>
+
+    <!-- Schema Cards -->
+    <rect x="16" y="65" width="288" height="48" rx="6" fill="#141c2e" stroke="rgba(59,130,246,0.2)"/>
+    <text x="28" y="86" font-family="'JetBrains Mono', monospace" font-size="11" fill="#60a5fa">Table: events</text>
+    <text x="28" y="103" font-family="sans-serif" font-size="10" fill="#94a3b8">id (PK), title, capacity, registration_deadline</text>
+
+    <rect x="16" y="122" width="288" height="48" rx="6" fill="#141c2e" stroke="rgba(59,130,246,0.2)"/>
+    <text x="28" y="143" font-family="'JetBrains Mono', monospace" font-size="11" fill="#60a5fa">Table: teams_participants</text>
+    <text x="28" y="160" font-family="sans-serif" font-size="10" fill="#94a3b8">team_id, event_id (FK), score, submission_url</text>
+
+    <rect x="16" y="178" width="288" height="44" rx="6" fill="#141c2e" stroke="rgba(16,185,129,0.2)"/>
+    <text x="28" y="198" font-family="'JetBrains Mono', monospace" font-size="11" fill="#34d399">Integrity Check</text>
+    <text x="28" y="213" font-family="sans-serif" font-size="10" fill="#94a3b8">Foreign Keys Enforced | ACID Compliance</text>
+  </g>
+
+  <!-- Right Bottom: CLI Capabilities -->
+  <g transform="translate(610, 325)">
+    <rect x="0" y="0" width="320" height="240" rx="8" fill="#0d111c" stroke="rgba(255,255,255,0.08)"/>
+    <text x="20" y="30" font-family="sans-serif" font-size="13" font-weight="600" fill="#f8fafc">Key Technical Highlights</text>
+
+    <circle cx="28" cy="65" r="4" fill="#60a5fa"/>
+    <text x="42" y="69" font-family="sans-serif" font-size="11" fill="#e2e8f0">Dual Admin &amp; Participant CLI interfaces</text>
+
+    <circle cx="28" cy="98" r="4" fill="#34d399"/>
+    <text x="42" y="102" font-family="sans-serif" font-size="11" fill="#e2e8f0">Zero-data-loss MongoDB-to-PostgreSQL ETL</text>
+
+    <circle cx="28" cy="131" r="4" fill="#f59e0b"/>
+    <text x="42" y="135" font-family="sans-serif" font-size="11" fill="#e2e8f0">Normalized relational queries with indexing</text>
+
+    <circle cx="28" cy="164" r="4" fill="#c084fc"/>
+    <text x="42" y="168" font-family="sans-serif" font-size="11" fill="#e2e8f0">High throughput batch registration engine</text>
+
+    <rect x="16" y="190" width="288" height="34" rx="6" fill="rgba(255,255,255,0.05)"/>
+    <text x="75" y="212" font-family="'JetBrains Mono', monospace" font-size="11" fill="#cbd5e1">github.com/akashs08b/CodeCorner</text>
+  </g>
+</svg>

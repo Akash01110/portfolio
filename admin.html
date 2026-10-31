@@ -1,0 +1,1823 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel — Portfolio</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet" />
+    <style>
+      /* ========== ADMIN PANEL STYLES ========== */
+      :root {
+        --bg: #000000;
+        --bg2: #080808;
+        --bg3: #121212;
+        --card: rgba(18, 18, 18, 0.7);
+        --border: rgba(255, 255, 255, 0.12);
+        --border-h: rgba(255, 255, 255, 0.35);
+        --text: #ffffff;
+        --text2: #a3a3a3;
+        --text3: #666666;
+        --accent: #ffffff;
+        --accent2: #e0e0e0;
+        --red: #ff4757;
+        --font: 'Inter', system-ui, sans-serif;
+        --mono: 'JetBrains Mono', monospace;
+        --radius: 12px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: var(--font);
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        min-height: 100vh;
+      }
+
+      a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      /* Login Screen */
+      .login-screen {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 2rem;
+      }
+
+      .login-card {
+        width: 100%;
+        max-width: 420px;
+        padding: 3rem;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        text-align: center;
+      }
+
+      .login-card h1 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        background: linear-gradient(135deg, #ffffff, #a0a0a0);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .login-card p {
+        color: var(--text2);
+        font-size: 0.9rem;
+        margin-bottom: 2rem;
+      }
+
+      .login-card .form-group {
+        text-align: left;
+        margin-bottom: 1.25rem;
+      }
+
+      .login-card .error {
+        background: rgba(255, 71, 87, 0.1);
+        border: 1px solid rgba(255, 71, 87, 0.3);
+        color: var(--red);
+        padding: 0.75rem 1rem;
+        border-radius: 8px;
+        font-size: 0.85rem;
+        margin-bottom: 1rem;
+        display: none;
+      }
+
+      .login-card .error.show {
+        display: block;
+      }
+
+      /* Admin Layout */
+      .admin-layout {
+        display: none;
+      }
+
+      .admin-layout.active {
+        display: flex;
+        min-height: 100vh;
+      }
+
+      .admin-sidebar {
+        width: 260px;
+        background: var(--bg2);
+        border-right: 1px solid var(--border);
+        padding: 1.5rem 0;
+        flex-shrink: 0;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .sidebar-header {
+        padding: 0 1.5rem 1.5rem;
+        border-bottom: 1px solid var(--border);
+        margin-bottom: 1rem;
+      }
+
+      .sidebar-header h2 {
+        font-size: 1rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .sidebar-header p {
+        font-size: 0.78rem;
+        color: var(--text3);
+        margin-top: 0.25rem;
+      }
+
+      .sidebar-nav {
+        flex: 1;
+        padding: 0 0.75rem;
+      }
+
+      .sidebar-link {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.7rem 1rem;
+        border-radius: 8px;
+        font-size: 0.88rem;
+        font-weight: 500;
+        color: var(--text2);
+        cursor: pointer;
+        transition: all 0.2s ease;
+        border: none;
+        background: none;
+        width: 100%;
+        text-align: left;
+        font-family: var(--font);
+      }
+
+      .sidebar-link:hover {
+        background: rgba(108, 99, 255, 0.08);
+        color: var(--text);
+      }
+
+      .sidebar-link.active {
+        background: rgba(108, 99, 255, 0.12);
+        color: var(--accent);
+      }
+
+      .sidebar-link svg {
+        width: 18px;
+        height: 18px;
+        flex-shrink: 0;
+      }
+
+      .sidebar-footer {
+        padding: 1rem 1.5rem;
+        border-top: 1px solid var(--border);
+        margin-top: auto;
+      }
+
+      .sidebar-footer a,
+      .sidebar-footer button {
+        display: block;
+        font-size: 0.82rem;
+        color: var(--text3);
+        margin-bottom: 0.5rem;
+        cursor: pointer;
+        border: none;
+        background: none;
+        font-family: var(--font);
+        padding: 0;
+        transition: color 0.2s ease;
+      }
+
+      .sidebar-footer a:hover,
+      .sidebar-footer button:hover {
+        color: var(--accent);
+      }
+
+      .sidebar-footer .logout-btn:hover {
+        color: var(--red);
+      }
+
+      .admin-main {
+        flex: 1;
+        padding: 2rem 3rem;
+        max-width: 900px;
+        overflow-y: auto;
+      }
+
+      .admin-main h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+
+      .admin-main .subtitle {
+        color: var(--text2);
+        font-size: 0.9rem;
+        margin-bottom: 2rem;
+      }
+
+      /* Tab Panels */
+      .tab-panel {
+        display: none;
+      }
+
+      .tab-panel.active {
+        display: block;
+      }
+
+      /* Form Styles */
+      label {
+        display: block;
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: var(--text2);
+        margin-bottom: 0.4rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      input,
+      textarea,
+      select {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        background: rgba(6, 8, 15, 0.6);
+        color: var(--text);
+        font-family: var(--font);
+        font-size: 0.9rem;
+        outline: none;
+        transition: all 0.2s ease;
+        margin-bottom: 1.25rem;
+      }
+
+      input:focus,
+      textarea:focus,
+      select:focus {
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.08);
+      }
+
+      textarea {
+        resize: vertical;
+        min-height: 100px;
+      }
+
+      input::placeholder,
+      textarea::placeholder {
+        color: var(--text3);
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+
+      .form-section {
+        margin-bottom: 2rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .form-section:last-child {
+        border-bottom: none;
+      }
+
+      .form-section-title {
+        font-size: 1rem;
+        font-weight: 700;
+        margin-bottom: 1.25rem;
+        color: var(--text);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      /* Buttons */
+      .btn-save {
+        padding: 0.8rem 2rem;
+        background: linear-gradient(135deg, #ffffff, #a0a0a0);
+        color: #fff;
+        border: none;
+        border-radius: 24px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        cursor: pointer;
+        font-family: var(--font);
+        transition: all 0.2s ease;
+        box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+      }
+
+      .btn-save:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 25px rgba(255, 255, 255, 0.3);
+      }
+
+      .btn-secondary {
+        padding: 0.65rem 1.5rem;
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--accent);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        font-weight: 500;
+        font-size: 0.82rem;
+        cursor: pointer;
+        font-family: var(--font);
+        transition: all 0.2s ease;
+      }
+
+      .btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.15);
+      }
+
+      .btn-danger {
+        padding: 0.5rem 1rem;
+        background: rgba(255, 71, 87, 0.1);
+        color: var(--red);
+        border: 1px solid rgba(255, 71, 87, 0.2);
+        border-radius: 8px;
+        font-weight: 500;
+        font-size: 0.78rem;
+        cursor: pointer;
+        font-family: var(--font);
+        transition: all 0.2s ease;
+      }
+
+      .btn-danger:hover {
+        background: rgba(255, 71, 87, 0.2);
+      }
+
+      .btn-row {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      /* Dynamic List Items */
+      .dynamic-item {
+        padding: 1.25rem;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        margin-bottom: 1rem;
+        position: relative;
+      }
+
+      .dynamic-item .remove-btn {
+        position: absolute;
+        top: 0.75rem;
+        right: 0.75rem;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: rgba(255, 71, 87, 0.1);
+        border: 1px solid rgba(255, 71, 87, 0.2);
+        color: var(--red);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        transition: all 0.2s ease;
+      }
+
+      .dynamic-item .remove-btn:hover {
+        background: rgba(255, 71, 87, 0.3);
+      }
+
+      .cert-admin-item {
+        display: grid;
+        grid-template-columns: 160px 1fr;
+        gap: 1.5rem;
+        align-items: center;
+      }
+
+      .cert-preview-box {
+        width: 100%;
+        height: 120px;
+        border-radius: 8px;
+        background: #070a14;
+        border: 1px solid var(--border);
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .cert-preview-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .cert-upload-btn-mini {
+        margin-top: 0.5rem;
+        padding: 0.4rem 0.65rem;
+        font-size: 0.75rem;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        color: var(--accent);
+        cursor: pointer;
+        display: block;
+        text-align: center;
+        width: 100%;
+      }
+
+      .cert-upload-btn-mini:hover {
+        background: var(--accent);
+        color: #fff;
+      }
+
+      @media (max-width: 650px) {
+        .cert-admin-item {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Certificate Upload & Card Management */
+      .upload-box {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: var(--radius);
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .upload-box-title {
+        font-size: 1.05rem;
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+        color: var(--text);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .upload-box-subtitle {
+        font-size: 0.82rem;
+        color: var(--text2);
+        margin-bottom: 1.25rem;
+      }
+
+      .admin-dropzone {
+        border: 2px dashed rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        padding: 1.5rem 1rem;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+        transition: all 0.2s ease;
+        margin-bottom: 1.25rem;
+      }
+
+      .admin-dropzone:hover,
+      .admin-dropzone.dragover {
+        border-color: #ffffff;
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      .admin-dropzone-preview {
+        display: none;
+        align-items: center;
+        gap: 1rem;
+        justify-content: center;
+      }
+
+      .admin-dropzone-preview img {
+        max-height: 100px;
+        max-width: 140px;
+        object-fit: contain;
+        border-radius: 6px;
+        border: 1px solid var(--border);
+      }
+
+      .quick-chips-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-top: 0.4rem;
+      }
+
+      .quick-chip {
+        display: inline-block;
+        font-size: 0.72rem;
+        padding: 0.2rem 0.55rem;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        cursor: pointer;
+        color: var(--text2);
+        transition: all 0.2s ease;
+      }
+
+      .quick-chip:hover {
+        background: #ffffff;
+        color: #000000;
+      }
+
+      .cert-card-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      }
+
+      .cert-card-badge {
+        font-size: 0.75rem;
+        font-weight: 600;
+        font-family: var(--mono);
+        color: var(--text2);
+        background: rgba(255, 255, 255, 0.06);
+        padding: 0.2rem 0.6rem;
+        border-radius: 6px;
+      }
+
+      .cert-actions-bar {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .btn-cert-delete {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        padding: 0.35rem 0.75rem;
+        background: rgba(255, 71, 87, 0.12);
+        color: var(--red);
+        border: 1px solid rgba(255, 71, 87, 0.3);
+        border-radius: 6px;
+        font-size: 0.78rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .btn-cert-delete:hover {
+        background: rgba(255, 71, 87, 0.25);
+        color: #ff6b81;
+      }
+
+      .btn-cert-move {
+        padding: 0.35rem 0.6rem;
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--text2);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        font-size: 0.78rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .btn-cert-move:hover:not(:disabled) {
+        background: rgba(255, 255, 255, 0.15);
+        color: var(--text);
+      }
+
+      .btn-cert-move:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+      }
+
+      .add-btn {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.25rem;
+        border: 1px dashed var(--border);
+        border-radius: var(--radius);
+        background: transparent;
+        color: var(--text2);
+        cursor: pointer;
+        font-family: var(--font);
+        font-size: 0.85rem;
+        transition: all 0.2s ease;
+        width: 100%;
+        justify-content: center;
+      }
+
+      .add-btn:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+        background: rgba(108, 99, 255, 0.04);
+      }
+
+      /* Toast */
+      .toast {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        padding: 1rem 1.5rem;
+        background: var(--bg3);
+        border: 1px solid var(--border-h);
+        border-radius: var(--radius);
+        color: var(--text);
+        font-size: 0.9rem;
+        font-weight: 500;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        z-index: 1000;
+        transform: translateY(100px);
+        opacity: 0;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .toast.show {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      .toast.success {
+        border-color: rgba(0, 212, 170, 0.4);
+      }
+
+      .toast.success::before {
+        content: '✓ ';
+        color: var(--accent2);
+      }
+
+      /* Password Modal */
+      .modal-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal-overlay.show {
+        display: flex;
+      }
+
+      .modal-box {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 2rem;
+        max-width: 400px;
+        width: 90%;
+      }
+
+      .modal-box h3 {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+      }
+
+      @media (max-width: 768px) {
+        .admin-layout.active {
+          flex-direction: column;
+        }
+
+        .admin-sidebar {
+          width: 100%;
+          height: auto;
+          position: relative;
+          flex-direction: row;
+          flex-wrap: wrap;
+          padding: 1rem;
+        }
+
+        .sidebar-header {
+          padding: 0 1rem 1rem;
+          width: 100%;
+        }
+
+        .sidebar-nav {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.25rem;
+          padding: 0 0.5rem;
+          width: 100%;
+        }
+
+        .sidebar-link {
+          padding: 0.5rem 0.75rem;
+          font-size: 0.78rem;
+        }
+
+        .sidebar-footer {
+          width: 100%;
+          display: flex;
+          gap: 1rem;
+        }
+
+        .admin-main {
+          padding: 1.5rem;
+        }
+
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <!-- ========== LOGIN SCREEN ========== -->
+    <div class="login-screen" id="loginScreen">
+      <div class="login-card">
+        <h1>🔒 Admin Panel</h1>
+        <p>Enter your password to manage your portfolio content.</p>
+        <div class="error" id="loginError">Incorrect password. Please try again.</div>
+        <div class="form-group">
+          <label for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" placeholder="Enter admin password" autofocus />
+        </div>
+        <button class="btn-save" style="width:100%" onclick="attemptLogin()">Unlock Panel</button>
+        <p style="margin-top:1.5rem;font-size:0.78rem;color:var(--text3)">
+          Default password: <code style="color:var(--accent);font-family:var(--mono)">akash123</code><br>
+          Change it after first login!
+        </p>
+      </div>
+    </div>
+
+    <!-- ========== ADMIN LAYOUT ========== -->
+    <div class="admin-layout" id="adminLayout">
+
+      <!-- Sidebar -->
+      <aside class="admin-sidebar">
+        <div class="sidebar-header">
+          <h2>⚙️ Admin Panel</h2>
+          <p>Edit your portfolio</p>
+        </div>
+        <nav class="sidebar-nav">
+          <button class="sidebar-link active" data-tab="personal" onclick="switchTab('personal', this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
+            Personal Info
+          </button>
+          <button class="sidebar-link" data-tab="skills" onclick="switchTab('skills', this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="16 18 22 12 16 6" />
+              <polyline points="8 6 2 12 8 18" />
+            </svg>
+            Skills
+          </button>
+          <button class="sidebar-link" data-tab="certificates" onclick="switchTab('certificates', this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="8" r="7" />
+              <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
+            </svg>
+            Certificates
+          </button>
+          <button class="sidebar-link" data-tab="projects" onclick="switchTab('projects', this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="3" width="20" height="14" rx="2" />
+              <line x1="8" y1="21" x2="16" y2="21" />
+              <line x1="12" y1="17" x2="12" y2="21" />
+            </svg>
+            Projects
+          </button>
+          <button class="sidebar-link" data-tab="experience" onclick="switchTab('experience', this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="7" width="20" height="14" rx="2" />
+              <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16" />
+            </svg>
+            Experience
+          </button>
+          <button class="sidebar-link" data-tab="security" onclick="switchTab('security', this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="11" width="18" height="11" rx="2" />
+              <path d="M7 11V7a5 5 0 0110 0v4" />
+            </svg>
+            Security
+          </button>
+        </nav>
+        <div class="sidebar-footer">
+          <a href="index.html" target="_blank">↗ View Portfolio</a>
+          <button class="logout-btn" onclick="logout()">⏻ Logout</button>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="admin-main">
+
+        <!-- PERSONAL INFO TAB -->
+        <div class="tab-panel active" id="tab-personal">
+          <h2>Personal Information</h2>
+          <p class="subtitle">Update your name, bio, contact details, and social links.</p>
+
+          <div class="form-section">
+            <div class="form-section-title">👤 Basic Info</div>
+            <div class="form-row">
+              <div>
+                <label for="adminName">Full Name</label>
+                <input type="text" id="adminName" placeholder="Akash S" />
+              </div>
+              <div>
+                <label for="adminTitle">Title / Role</label>
+                <input type="text" id="adminTitle" placeholder="Data Analyst" />
+              </div>
+            </div>
+            <label for="adminBio">Short Bio (Hero Section)</label>
+            <textarea id="adminBio" rows="3" placeholder="Aspiring Data Analyst..."></textarea>
+
+            <label for="adminAbout1">About Paragraph 1</label>
+            <textarea id="adminAbout1" rows="3" placeholder="First paragraph of about section..."></textarea>
+
+            <label for="adminAbout2">About Paragraph 2</label>
+            <textarea id="adminAbout2" rows="3" placeholder="Second paragraph..."></textarea>
+          </div>
+
+          <div class="form-section">
+            <div class="form-section-title">📞 Contact Details</div>
+            <div class="form-row">
+              <div>
+                <label for="adminEmail">Email</label>
+                <input type="email" id="adminEmail" placeholder="akash0b8@gmail.com" />
+              </div>
+              <div>
+                <label for="adminPhone">Phone</label>
+                <input type="text" id="adminPhone" placeholder="+91-9400696193" />
+              </div>
+            </div>
+            <label for="adminLocation">Location</label>
+            <input type="text" id="adminLocation" placeholder="Vadakkanchery, Palakkad, Kerala" />
+          </div>
+
+          <div class="form-section">
+            <div class="form-section-title">🔗 Social Links</div>
+            <div class="form-row">
+              <div>
+                <label for="adminLinkedin">LinkedIn URL</label>
+                <input type="url" id="adminLinkedin" placeholder="https://linkedin.com/in/..." />
+              </div>
+              <div>
+                <label for="adminGithub">GitHub URL</label>
+                <input type="url" id="adminGithub" placeholder="https://github.com/..." />
+              </div>
+            </div>
+          </div>
+
+          <div class="btn-row">
+            <button class="btn-save" onclick="saveAll()">💾 Save Changes</button>
+          </div>
+        </div>
+
+        <!-- SKILLS TAB -->
+        <div class="tab-panel" id="tab-skills">
+          <h2>Skills</h2>
+          <p class="subtitle">Edit skills displayed on your portfolio. Changes require editing the HTML directly for
+            now. Use the personal info tab for quick text edits.</p>
+
+          <div class="form-section">
+            <div class="form-section-title">📝 Quick Skill Notes</div>
+            <p style="color:var(--text2);font-size:0.9rem;margin-bottom:1rem;">
+              Your current skills are defined directly in the HTML. To modify the skill tags, edit the
+              <code style="color:var(--accent);font-family:var(--mono)">index.html</code> file's skill section.
+            </p>
+            <p style="color:var(--text3);font-size:0.85rem;">
+              Current skills: Python, SQL, HTML, CSS, JavaScript, Django, Tableau, Excel, Machine Learning,
+              PostgreSQL, MongoDB, AWS Cloud, Communication, Problem Solving, Teamwork
+            </p>
+          </div>
+        </div>
+
+        <!-- CERTIFICATES TAB -->
+        <div class="tab-panel" id="tab-certificates">
+          <div
+            style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1rem; margin-bottom:1.5rem;">
+            <div>
+              <h2>Certificates Management</h2>
+              <p class="subtitle">Upload, edit, reorder, or delete your portfolio certificates.</p>
+            </div>
+            <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+              <button type="button" class="btn-secondary" style="display:inline-flex; align-items:center; gap:0.5rem;"
+                onclick="exportCertificatesJSON()">
+                📥 Export JSON
+              </button>
+            </div>
+          </div>
+
+          <!-- UPLOAD NEW CERTIFICATE PANEL -->
+          <div class="upload-box">
+            <div class="upload-box-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                <line x1="12" y1="11" x2="12" y2="17"></line>
+                <line x1="9" y1="14" x2="15" y2="14"></line>
+              </svg>
+              <span>+ Upload New Certificate</span>
+            </div>
+            <p class="upload-box-subtitle">Choose a certificate image from your computer folder and enter details to
+              publish it to your portfolio.</p>
+
+            <!-- Dropzone -->
+            <input type="file" id="adminUploadFileInput" accept="image/png, image/jpeg, image/jpg, image/webp"
+              style="display:none;" onchange="handleAdminNewUploadFile(event)" />
+            <div class="admin-dropzone" id="adminUploadDropzone"
+              onclick="document.getElementById('adminUploadFileInput').click()">
+              <div id="adminDropzonePrompt">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                  style="margin-bottom:0.5rem; opacity:0.8;">
+                  <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                  <polyline points="12 11 12 17 9 14 15 14"></polyline>
+                </svg>
+                <p style="font-weight:600; font-size:0.95rem; margin-bottom:0.25rem;">📁 Click to browse folder or drag
+                  &amp; drop certificate image</p>
+                <p style="font-size:0.78rem; color:var(--text3);">Supports PNG, JPG, JPEG, WEBP (auto-compressed)</p>
+              </div>
+              <div class="admin-dropzone-preview" id="adminDropzonePreview">
+                <img id="adminUploadPreviewImg" src="" alt="Selected Preview" />
+                <div style="text-align:left;">
+                  <div id="adminUploadFileName"
+                    style="font-size:0.85rem; font-weight:600; color:var(--text); word-break:break-all;">certificate.png
+                  </div>
+                  <button type="button" class="btn-secondary"
+                    style="margin-top:0.4rem; padding:0.25rem 0.65rem; font-size:0.75rem;"
+                    onclick="event.stopPropagation(); document.getElementById('adminUploadFileInput').click();">Choose
+                    Different File</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Upload Fields -->
+            <div class="form-row">
+              <div>
+                <label for="newCertTitle">Certificate Title <span style="color:var(--red);">*</span></label>
+                <input type="text" id="newCertTitle" placeholder="e.g. AWS Certified Cloud Practitioner" />
+              </div>
+              <div>
+                <label for="newCertIssuer">Issuing Organization <span style="color:var(--red);">*</span></label>
+                <input type="text" id="newCertIssuer" placeholder="e.g. IBM, AWS, HackerRank" />
+                <div class="quick-chips-row">
+                  <span class="quick-chip" onclick="fillNewIssuer('JYESTA')">JYESTA</span>
+                  <span class="quick-chip" onclick="fillNewIssuer('IBM')">IBM</span>
+                  <span class="quick-chip" onclick="fillNewIssuer('AWS')">AWS</span>
+                  <span class="quick-chip" onclick="fillNewIssuer('HackerRank')">HackerRank</span>
+                  <span class="quick-chip" onclick="fillNewIssuer('Google')">Google</span>
+                  <span class="quick-chip" onclick="fillNewIssuer('Coursera')">Coursera</span>
+                  <span class="quick-chip" onclick="fillNewIssuer('St Thomas College (Autonomous)')">St Thomas
+                    College</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row" style="margin-top:0.75rem;">
+              <div>
+                <label for="newCertDate">Issue Date <span style="color:var(--red);">*</span></label>
+                <input type="text" id="newCertDate" placeholder="e.g. October 2024" />
+              </div>
+              <div>
+                <label for="newCertLink">Credential URL / Verification Link <span
+                    style="color:var(--text3);">(optional)</span></label>
+                <input type="url" id="newCertLink" placeholder="https://..." />
+              </div>
+            </div>
+
+            <div style="margin-top:1.25rem; display:flex; gap:0.75rem; align-items:center;">
+              <button type="button" class="btn-save" style="display:inline-flex; align-items:center; gap:0.5rem;"
+                onclick="submitNewCertificate()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                  <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                  <polyline points="7 3 7 8 15 8"></polyline>
+                </svg>
+                <span>Upload &amp; Add Certificate</span>
+              </button>
+              <button type="button" class="btn-secondary" onclick="resetNewCertForm()">Clear</button>
+            </div>
+          </div>
+
+          <!-- EXISTING CERTIFICATES LIST -->
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+            <h3 id="certCountHeader" style="font-size:1.1rem;">Current Certificates</h3>
+            <button type="button" class="btn-secondary" style="font-size:0.78rem; padding:0.4rem 0.75rem;"
+              onclick="addCertificateEmpty()">+ Add Empty Row</button>
+          </div>
+
+          <div id="certList"></div>
+
+          <div class="btn-row" style="margin-top:2rem;">
+            <button class="btn-save" onclick="saveAll()">💾 Save All Changes</button>
+          </div>
+        </div>
+
+        <!-- PROJECTS TAB -->
+        <div class="tab-panel" id="tab-projects">
+          <h2>Projects</h2>
+          <p class="subtitle">Manage your portfolio projects.</p>
+
+          <div id="projectList"></div>
+
+          <button class="add-btn" onclick="addProject()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="12" y1="5" x2="12" y2="19" />
+              <line x1="5" y1="12" x2="19" y2="12" />
+            </svg>
+            Add Project
+          </button>
+
+          <div class="btn-row">
+            <button class="btn-save" onclick="saveAll()">💾 Save Projects</button>
+          </div>
+        </div>
+
+        <!-- EXPERIENCE TAB -->
+        <div class="tab-panel" id="tab-experience">
+          <h2>Experience</h2>
+          <p class="subtitle">Manage your work experience entries.</p>
+
+          <div id="expList"></div>
+
+          <button class="add-btn" onclick="addExperience()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="12" y1="5" x2="12" y2="19" />
+              <line x1="5" y1="12" x2="19" y2="12" />
+            </svg>
+            Add Experience
+          </button>
+
+          <div class="btn-row">
+            <button class="btn-save" onclick="saveAll()">💾 Save Experience</button>
+          </div>
+        </div>
+
+        <!-- SECURITY TAB -->
+        <div class="tab-panel" id="tab-security">
+          <h2>Security</h2>
+          <p class="subtitle">Change your admin password and manage data.</p>
+
+          <div class="form-section">
+            <div class="form-section-title">🔑 Change Password</div>
+            <label for="currentPass">Current Password</label>
+            <input type="password" id="currentPass" placeholder="Enter current password" />
+            <label for="newPass">New Password</label>
+            <input type="password" id="newPass" placeholder="Enter new password" />
+            <label for="confirmPass">Confirm New Password</label>
+            <input type="password" id="confirmPass" placeholder="Confirm new password" />
+            <div class="btn-row" style="margin-top:1rem">
+              <button class="btn-save" onclick="changePassword()">🔒 Update Password</button>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <div class="form-section-title">📦 Data Management</div>
+            <p style="color:var(--text2);font-size:0.88rem;margin-bottom:1rem;">Export your portfolio data as JSON
+              backup or import from a previous export.</p>
+            <div class="btn-row" style="margin-top:0">
+              <button class="btn-secondary" onclick="exportData()">⬇ Export Data</button>
+              <button class="btn-secondary" onclick="document.getElementById('importFile').click()">⬆ Import
+                Data</button>
+              <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)" />
+              <button class="btn-danger" onclick="clearAllData()">🗑 Reset All Data</button>
+            </div>
+          </div>
+        </div>
+
+      </main>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <script>
+      /* ========================================
+         ADMIN PANEL JAVASCRIPT
+         ======================================== */
+
+      const DEFAULT_PASSWORD = 'akash123';
+      const STORAGE_KEY = 'portfolioData';
+      const PASS_KEY = 'portfolioAdminPass';
+
+      // ——— Data Model ———
+      let data = {
+        name: 'Akash S',
+        title: 'Data Science Undergraduate & Trainee',
+        bio: 'Data Science undergraduate who has independently built and deployed full-stack applications using Python, Django, and PostgreSQL. Strong foundation in SQL, data cleaning, visualization, and extracting actionable insights.',
+        about1: 'Data Science undergraduate who has independently built and deployed two full-stack applications — a role-based gas cylinder booking platform (Smart Cylinder) and a command-line event management system (CodeCorner) — using Python, Django, and PostgreSQL.',
+        about2: 'Strong foundation in SQL, data cleaning, exploratory analysis, and visualization (Python, Tableau), with hands-on experience turning raw requirements into working, end-to-end software.',
+        email: 'akashs08b@gmail.com',
+        phone: '+91-9400696193',
+        location: 'Vadakkanchery, Palakkad, Kerala, India 678686',
+        linkedin: 'https://www.linkedin.com/in/akash-s-6b0b23319',
+        github: 'https://github.com/akashs08b',
+        certificates: [
+          { title: 'Data Science Internship Certification', issuer: 'JYESTA', date: 'January 2026', image: 'assets/cert_jyesta_internship.jpg', credentialUrl: 'https://www.jyesta.com' },
+          { title: 'Certificate Program in AWS Cloud Architect', issuer: 'St Thomas College (Autonomous)', date: '2024 — 2025', image: 'assets/cert_aws_cloud_architect.jpg', credentialUrl: '' },
+          { title: 'SQL (Basic)', issuer: 'HackerRank', date: 'June 2025', image: 'assets/cert_hackerrank_sql.jpg', credentialUrl: 'https://www.hackerrank.com/certificates/480A272B3A10' },
+          { title: 'Data Visualization with Python', issuer: 'IBM', date: 'October 2024', image: 'assets/cert_ibm_data_vis.jpg', credentialUrl: 'https://courses.cognitiveclass.ai' },
+          { title: 'Data Science 101', issuer: 'IBM', date: 'July 2024', image: 'assets/cert_ibm_data_science.jpg', credentialUrl: 'https://courses.cognitiveclass.ai' },
+          { title: 'Data Science Methodology', issuer: 'IBM', date: 'July 2024', image: 'assets/cert_ibm_data_science_methodology.jpg', credentialUrl: 'https://courses.cognitiveclass.ai/certificates/5a63374c1ea14150b48a9c82ddf85cb9' },
+          { title: 'SQL and Relational Databases 101', issuer: 'IBM', date: 'December 2024', image: 'assets/cert_ibm_sql_relational_db.jpg', credentialUrl: 'https://courses.cognitiveclass.ai/certificates/002c0088ede2458faafbe68319ed0499' },
+          { title: 'NoSQL and DBaaS 101', issuer: 'IBM', date: 'December 2024', image: 'assets/cert_ibm_nosql_dbaas.jpg', credentialUrl: 'https://courses.cognitiveclass.ai/certificates/8fcf0103a07ca64494cf0db00bde0ef0' },
+          { title: 'Containers, Kubernetes & OpenShift V2', issuer: 'IBM', date: 'December 2024', image: 'assets/cert_ibm_containers_k8s.jpg', credentialUrl: 'https://courses.cognitiveclass.ai/certificates/f5ba89494af0413eabd3880083f4fa34' },
+          { title: 'Introduction to Cloud', issuer: 'IBM', date: 'July 2024', image: 'assets/cert_ibm_intro_cloud.jpg', credentialUrl: 'https://courses.cognitiveclass.ai/certificates/0b538297570a4414846daaaf975a0c42' },
+          { title: 'Introduction to Open Source', issuer: 'IBM', date: 'December 2024', image: 'assets/cert_ibm_intro_open_source.jpg', credentialUrl: 'https://courses.cognitiveclass.ai/certificates/3282c01a34f445b38c314ca9ee09c8e7' },
+          { title: 'Data Privacy Fundamentals', issuer: 'IBM', date: 'August 2024', image: 'assets/cert_ibm_data_privacy.jpg', credentialUrl: 'https://courses.cognitiveclass.ai/certificates/2b4bdee3375a4ccd8c4cc3424cc55140' }
+        ],
+        projects: [
+          {
+            title: 'SmartCylinder — Gas Delivery Management Platform',
+            image: 'assets/project_smartcylinder.svg',
+            description: 'Built a full booking-to-delivery platform with three role-based dashboards (Admin, Staff, Customer), supporting online booking, real-time delivery tracking, and automated notifications. Designed the PostgreSQL schema and backend logic to support booking history and operational analytics used to track delivery efficiency.',
+            tags: 'Django, Python, PostgreSQL, HTML, CSS, JavaScript',
+            liveUrl: 'https://github.com/akashs08b/Smart-Cylinder',
+            sourceUrl: 'https://github.com/akashs08b/Smart-Cylinder',
+          },
+          {
+            title: 'CodeCorner — CLI Event Management System',
+            image: 'assets/project_codecorner.svg',
+            description: 'Developed a command-line application for managing coding competitions and hackathons, with separate Admin and User modules for event creation, registration, and participation. Migrated the data layer from MongoDB to PostgreSQL, redesigning the schema to support relational queries without losing existing functionality.',
+            tags: 'Python, PostgreSQL, CLI, MongoDB Migration',
+            liveUrl: 'https://github.com/akashs08b/CodeCorner',
+            sourceUrl: 'https://github.com/akashs08b/CodeCorner',
+          },
+          {
+            title: 'Huntington’s Disease Stage Prediction Using Machine Learning',
+            image: 'assets/project_huntington_ml.svg',
+            description: 'Developed a multiclass machine learning system for Huntington’s disease stage prediction using clinical, genetic, and patient-level features. Implemented data preprocessing, feature engineering, categorical encoding, and feature selection, followed by training and comparison of multiple classification algorithms, including CatBoost, XGBoost, LightGBM, Random Forest, Extra Trees, SVM, and MLP. Evaluated model performance using accuracy, precision, recall, F1-score, and confusion matrix to identify the most effective predictive approach.',
+            tags: 'Python, Machine Learning, CatBoost, XGBoost, LightGBM, Random Forest, SVM, MLP',
+            liveUrl: 'https://github.com/akashs08b',
+            sourceUrl: 'https://github.com/akashs08b',
+          },
+          {
+            title: 'YouTube Channel Analytics Dashboard | Tableau',
+            image: 'assets/project_youtube_analytics.svg',
+            description: 'Developed an interactive Tableau dashboard to analyze YouTube channel performance, audience engagement, content categories, geographic distribution, and key performance metrics. Created dynamic visualizations to identify top-performing channels, engagement trends, category-wise follower distribution, and audience interaction patterns, enabling clear and data-driven insights from complex datasets.',
+            tags: 'Tableau, Data Analytics, Data Visualization, Audience Engagement, Performance Metrics',
+            liveUrl: 'https://github.com/akashs08b',
+            sourceUrl: 'https://github.com/akashs08b',
+          },
+        ],
+        experience: [
+          {
+            role: 'Data Science Trainee',
+            company: 'JYESTAAcademy',
+            period: '2025 — 2026',
+            description: 'Completed an applied data science training program covering data cleaning, exploratory analysis, and visualization, with hands-on exercises on real datasets.',
+            tags: 'Python, Data Cleaning, Exploratory Data Analysis, Visualization, Real Datasets',
+          },
+        ],
+      };
+
+      // ——— Auth ———
+      function getStoredPass() {
+        return localStorage.getItem(PASS_KEY) || DEFAULT_PASSWORD;
+      }
+
+      function attemptLogin() {
+        const input = document.getElementById('loginPassword').value;
+        const errorEl = document.getElementById('loginError');
+
+        if (input === getStoredPass()) {
+          document.getElementById('loginScreen').style.display = 'none';
+          document.getElementById('adminLayout').classList.add('active');
+          sessionStorage.setItem('adminLoggedIn', 'true');
+          loadData();
+          errorEl.classList.remove('show');
+        } else {
+          errorEl.classList.add('show');
+          document.getElementById('loginPassword').value = '';
+          document.getElementById('loginPassword').focus();
+        }
+      }
+
+      // Enter key on password field
+      document.getElementById('loginPassword').addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') attemptLogin();
+      });
+
+      // Auto-login if session active
+      if (sessionStorage.getItem('adminLoggedIn') === 'true') {
+        document.getElementById('loginScreen').style.display = 'none';
+        document.getElementById('adminLayout').classList.add('active');
+        loadData();
+      }
+
+      function logout() {
+        sessionStorage.removeItem('adminLoggedIn');
+        document.getElementById('adminLayout').classList.remove('active');
+        document.getElementById('loginScreen').style.display = 'flex';
+        document.getElementById('loginPassword').value = '';
+      }
+
+      // ——— Tabs ———
+      function switchTab(tabId, btnEl) {
+        document.querySelectorAll('.tab-panel').forEach((p) => p.classList.remove('active'));
+        document.querySelectorAll('.sidebar-link').forEach((l) => l.classList.remove('active'));
+        document.getElementById('tab-' + tabId).classList.add('active');
+        btnEl.classList.add('active');
+      }
+
+      // ——— Data Loading ———
+      function loadData() {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (stored) {
+          try {
+            const parsed = JSON.parse(stored);
+            data = { ...data, ...parsed };
+          } catch (e) { /* use defaults */ }
+        }
+
+        // Populate personal fields
+        document.getElementById('adminName').value = data.name || '';
+        document.getElementById('adminTitle').value = data.title || '';
+        document.getElementById('adminBio').value = data.bio || '';
+        document.getElementById('adminAbout1').value = data.about1 || '';
+        document.getElementById('adminAbout2').value = data.about2 || '';
+        document.getElementById('adminEmail').value = data.email || '';
+        document.getElementById('adminPhone').value = data.phone || '';
+        document.getElementById('adminLocation').value = data.location || '';
+        document.getElementById('adminLinkedin').value = data.linkedin || '';
+        document.getElementById('adminGithub').value = data.github || '';
+
+        renderCertificates();
+        renderProjects();
+        renderExperience();
+        initAdminDropzone();
+      }
+
+      // ——— Save ———
+      function saveAll() {
+        // Collect personal info
+        data.name = document.getElementById('adminName').value;
+        data.title = document.getElementById('adminTitle').value;
+        data.bio = document.getElementById('adminBio').value;
+        data.about1 = document.getElementById('adminAbout1').value;
+        data.about2 = document.getElementById('adminAbout2').value;
+        data.email = document.getElementById('adminEmail').value;
+        data.phone = document.getElementById('adminPhone').value;
+        data.location = document.getElementById('adminLocation').value;
+        data.linkedin = document.getElementById('adminLinkedin').value;
+        data.github = document.getElementById('adminGithub').value;
+
+        // Collect certificates
+        syncCertificatesFromDOM();
+
+        // Collect projects
+        data.projects = [];
+        document.querySelectorAll('#projectList .dynamic-item').forEach((item) => {
+          data.projects.push({
+            title: item.querySelector('.proj-title-input').value,
+            description: item.querySelector('.proj-desc-input').value,
+            tags: item.querySelector('.proj-tags-input').value,
+            liveUrl: item.querySelector('.proj-live-input').value,
+            sourceUrl: item.querySelector('.proj-source-input').value,
+          });
+        });
+
+        // Collect experience
+        data.experience = [];
+        document.querySelectorAll('#expList .dynamic-item').forEach((item) => {
+          data.experience.push({
+            role: item.querySelector('.exp-role-input').value,
+            company: item.querySelector('.exp-company-input').value,
+            period: item.querySelector('.exp-period-input').value,
+            description: item.querySelector('.exp-desc-input').value,
+            tags: item.querySelector('.exp-tags-input').value,
+          });
+        });
+
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        showToast('Changes saved! Refresh your portfolio to see updates.');
+      }
+
+      // ——— Certificates CRUD & File Upload ———
+      function syncCertificatesFromDOM() {
+        const items = document.querySelectorAll('#certList .dynamic-item');
+        if (items.length === 0) return;
+        data.certificates = [];
+        items.forEach((item) => {
+          data.certificates.push({
+            title: item.querySelector('.cert-title-input') ? item.querySelector('.cert-title-input').value.trim() : '',
+            issuer: item.querySelector('.cert-issuer-input') ? item.querySelector('.cert-issuer-input').value.trim() : '',
+            date: item.querySelector('.cert-date-input') ? item.querySelector('.cert-date-input').value.trim() : '',
+            link: item.querySelector('.cert-link-input') ? item.querySelector('.cert-link-input').value.trim() : '',
+            image: item.querySelector('.cert-image-input') ? item.querySelector('.cert-image-input').value : ''
+          });
+        });
+      }
+
+      function saveCertificatesOnly() {
+        try {
+          const stored = localStorage.getItem(STORAGE_KEY);
+          let currentData = data;
+          if (stored) {
+            try { currentData = { ...JSON.parse(stored), certificates: data.certificates }; } catch (e) { }
+          }
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(currentData));
+        } catch (err) {
+          console.warn('Error saving certificates to localStorage:', err);
+        }
+      }
+
+      function renderCertificates() {
+        const container = document.getElementById('certList');
+        const countHeader = document.getElementById('certCountHeader');
+        if (countHeader) {
+          countHeader.textContent = `Current Certificates (${data.certificates ? data.certificates.length : 0})`;
+        }
+        if (!container) return;
+
+        if (!data.certificates || data.certificates.length === 0) {
+          container.innerHTML = `
+            <div style="text-align:center; padding:3rem 1.5rem; background:var(--card); border:1px dashed var(--border); border-radius:var(--radius); color:var(--text2);">
+              <p style="font-size:1.05rem; color:#fff; font-weight:600; margin-bottom:0.35rem;">No certificates currently</p>
+              <p style="font-size:0.85rem;">Use the "+ Upload New Certificate" box above to add your credentials.</p>
+            </div>
+          `;
+          return;
+        }
+
+        container.innerHTML = '';
+        data.certificates.forEach((cert, i) => {
+          container.innerHTML += createCertItem(cert, i, data.certificates.length);
+        });
+      }
+
+      function createCertItem(cert, index, total) {
+        const imgSrc = cert.image || 'assets/cert_ibm_data_vis.png';
+        const isFirst = index === 0;
+        const isLast = index === total - 1;
+        return `
+        <div class="dynamic-item" id="cert-item-${index}">
+          <div class="cert-card-header">
+            <span class="cert-card-badge">#${index + 1}</span>
+            <div class="cert-actions-bar">
+              <button type="button" class="btn-cert-move" onclick="moveCert(${index}, -1)" ${isFirst ? 'disabled' : ''} title="Move Up">↑ Up</button>
+              <button type="button" class="btn-cert-move" onclick="moveCert(${index}, 1)" ${isLast ? 'disabled' : ''} title="Move Down">↓ Down</button>
+              <button type="button" class="btn-cert-delete" onclick="deleteCert(${index})" title="Delete Certificate">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="3 6 5 6 21 6"></polyline>
+                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                </svg>
+                <span>Delete</span>
+              </button>
+            </div>
+          </div>
+          <div class="cert-admin-item">
+            <div>
+              <div class="cert-preview-box">
+                <img src="${esc(imgSrc)}" alt="${esc(cert.title || 'Certificate Preview')}" />
+              </div>
+              <input type="hidden" class="cert-image-input" value="${esc(cert.image || '')}" />
+              <input type="file" id="cert-file-${index}" accept="image/png, image/jpeg, image/jpg, image/webp" style="display:none;" onchange="handleCertItemFileChange(${index}, event)" />
+              <button type="button" class="cert-upload-btn-mini" onclick="document.getElementById('cert-file-${index}').click()">
+                📁 Change Image (Folder)
+              </button>
+            </div>
+            <div>
+              <div class="form-row">
+                <div>
+                  <label>Certificate Title</label>
+                  <input class="cert-title-input" type="text" value="${esc(cert.title)}" placeholder="Certificate name" />
+                </div>
+                <div>
+                  <label>Issuing Organization</label>
+                  <input class="cert-issuer-input" type="text" value="${esc(cert.issuer)}" placeholder="IBM, Coursera, AWS, etc." />
+                </div>
+              </div>
+              <div class="form-row" style="margin-top:0.75rem;">
+                <div>
+                  <label>Date</label>
+                  <input class="cert-date-input" type="text" value="${esc(cert.date)}" placeholder="Month Year" />
+                </div>
+                <div>
+                  <label>Verification URL / ID (optional)</label>
+                  <input class="cert-link-input" type="text" value="${esc(cert.link || '')}" placeholder="https://..." />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      }
+
+      function deleteCert(index) {
+        syncCertificatesFromDOM();
+        const cert = data.certificates[index];
+        const certTitle = cert && cert.title ? `"${cert.title}"` : 'this certificate';
+        if (!confirm(`Are you sure you want to delete ${certTitle}? It will be removed from your portfolio.`)) {
+          return;
+        }
+        data.certificates.splice(index, 1);
+        saveCertificatesOnly();
+        renderCertificates();
+        showToast('Certificate deleted successfully!');
+      }
+
+      function moveCert(index, direction) {
+        syncCertificatesFromDOM();
+        const target = index + direction;
+        if (target < 0 || target >= data.certificates.length) return;
+        const temp = data.certificates[index];
+        data.certificates[index] = data.certificates[target];
+        data.certificates[target] = temp;
+        saveCertificatesOnly();
+        renderCertificates();
+        showToast('Certificate order updated!');
+      }
+
+      function handleCertItemFileChange(index, event) {
+        const file = event.target.files && event.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const img = new Image();
+          img.onload = function () {
+            const maxDim = 1400;
+            let w = img.width;
+            let h = img.height;
+            if (w > maxDim || h > maxDim) {
+              if (w > h) { h = Math.round((h * maxDim) / w); w = maxDim; }
+              else { w = Math.round((w * maxDim) / h); h = maxDim; }
+            }
+            const canvas = document.createElement('canvas');
+            canvas.width = w;
+            canvas.height = h;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, w, h);
+            const compressed = canvas.toDataURL('image/jpeg', 0.85);
+
+            const item = document.getElementById(`cert-item-${index}`);
+            if (item) {
+              const preview = item.querySelector('.cert-preview-box img');
+              const hiddenInput = item.querySelector('.cert-image-input');
+              const titleInput = item.querySelector('.cert-title-input');
+              if (preview) preview.src = compressed;
+              if (hiddenInput) hiddenInput.value = compressed;
+              if (titleInput && !titleInput.value) {
+                titleInput.value = file.name.replace(/\.[^/.]+$/, '').replace(/[-_]/g, ' ');
+              }
+            }
+            syncCertificatesFromDOM();
+            saveCertificatesOnly();
+            showToast('Certificate photo updated & saved!');
+          };
+          img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+
+      // ——— Upload Form Handlers ———
+      let newCertImageDataUrl = '';
+
+      function handleAdminNewUploadFile(event) {
+        const file = event.target.files && event.target.files[0];
+        if (!file) return;
+        processNewCertImageFile(file);
+      }
+
+      function processNewCertImageFile(file) {
+        if (!file.type.startsWith('image/')) {
+          alert('Please select an image file (PNG, JPG, WEBP).');
+          return;
+        }
+
+        const cleanName = file.name.replace(/\.[^/.]+$/, '').replace(/[-_]/g, ' ');
+        const titleInput = document.getElementById('newCertTitle');
+        if (titleInput && !titleInput.value) {
+          titleInput.value = cleanName;
+        }
+
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const img = new Image();
+          img.onload = function () {
+            const maxDim = 1400;
+            let w = img.width;
+            let h = img.height;
+            if (w > maxDim || h > maxDim) {
+              if (w > h) { h = Math.round((h * maxDim) / w); w = maxDim; }
+              else { w = Math.round((w * maxDim) / h); h = maxDim; }
+            }
+            const canvas = document.createElement('canvas');
+            canvas.width = w;
+            canvas.height = h;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, w, h);
+            newCertImageDataUrl = canvas.toDataURL('image/jpeg', 0.85);
+
+            document.getElementById('adminDropzonePrompt').style.display = 'none';
+            const previewBox = document.getElementById('adminDropzonePreview');
+            previewBox.style.display = 'flex';
+            document.getElementById('adminUploadPreviewImg').src = newCertImageDataUrl;
+            document.getElementById('adminUploadFileName').textContent = file.name;
+          };
+          img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+
+      function fillNewIssuer(name) {
+        const input = document.getElementById('newCertIssuer');
+        if (input) {
+          input.value = name;
+          input.focus();
+        }
+      }
+
+      function submitNewCertificate() {
+        syncCertificatesFromDOM();
+        const title = document.getElementById('newCertTitle').value.trim();
+        const issuer = document.getElementById('newCertIssuer').value.trim();
+        const date = document.getElementById('newCertDate').value.trim();
+        const link = document.getElementById('newCertLink').value.trim();
+
+        if (!title) {
+          alert('Please enter a certificate title.');
+          document.getElementById('newCertTitle').focus();
+          return;
+        }
+        if (!issuer) {
+          alert('Please enter the issuing organization.');
+          document.getElementById('newCertIssuer').focus();
+          return;
+        }
+        if (!date) {
+          alert('Please enter an issue date (e.g. October 2024).');
+          document.getElementById('newCertDate').focus();
+          return;
+        }
+
+        if (!data.certificates) data.certificates = [];
+
+        const newCert = {
+          title: title,
+          issuer: issuer,
+          date: date,
+          link: link,
+          image: newCertImageDataUrl || 'assets/cert_ibm_data_vis.png'
+        };
+
+        data.certificates.unshift(newCert);
+        saveCertificatesOnly();
+        renderCertificates();
+        resetNewCertForm();
+        showToast(`Certificate "${title}" uploaded and saved!`);
+      }
+
+      function resetNewCertForm() {
+        newCertImageDataUrl = '';
+        document.getElementById('newCertTitle').value = '';
+        document.getElementById('newCertIssuer').value = '';
+        document.getElementById('newCertDate').value = '';
+        document.getElementById('newCertLink').value = '';
+        const fileInput = document.getElementById('adminUploadFileInput');
+        if (fileInput) fileInput.value = '';
+        document.getElementById('adminDropzonePrompt').style.display = 'block';
+        document.getElementById('adminDropzonePreview').style.display = 'none';
+        document.getElementById('adminUploadPreviewImg').src = '';
+      }
+
+      function initAdminDropzone() {
+        const dropzone = document.getElementById('adminUploadDropzone');
+        if (!dropzone) return;
+        ['dragenter', 'dragover'].forEach(eventName => {
+          dropzone.addEventListener(eventName, (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            dropzone.classList.add('dragover');
+          });
+        });
+        ['dragleave', 'drop'].forEach(eventName => {
+          dropzone.addEventListener(eventName, (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            dropzone.classList.remove('dragover');
+          });
+        });
+        dropzone.addEventListener('drop', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          dropzone.classList.remove('dragover');
+          const files = e.dataTransfer.files;
+          if (files && files[0]) {
+            processNewCertImageFile(files[0]);
+          }
+        });
+      }
+
+      function addCertificateEmpty() {
+        syncCertificatesFromDOM();
+        if (!data.certificates) data.certificates = [];
+        data.certificates.push({ title: '', issuer: '', date: '', image: '', link: '' });
+        saveCertificatesOnly();
+        renderCertificates();
+        const items = document.querySelectorAll('#certList .dynamic-item');
+        items[items.length - 1]?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+
+      function exportCertificatesJSON() {
+        syncCertificatesFromDOM();
+        const jsonStr = JSON.stringify(data.certificates, null, 2);
+        const blob = new Blob([jsonStr], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'certificates.json';
+        a.click();
+        URL.revokeObjectURL(url);
+        showToast('certificates.json exported successfully!');
+      }
+
+      // ——— Projects CRUD ———
+      function renderProjects() {
+        const container = document.getElementById('projectList');
+        container.innerHTML = '';
+        data.projects.forEach((proj, i) => {
+          container.innerHTML += createProjectItem(proj, i);
+        });
+      }
+
+      function createProjectItem(proj, index) {
+        return `
+        <div class="dynamic-item">
+          <button class="remove-btn" onclick="removeProject(${index})">×</button>
+          <label>Project Title</label>
+          <input class="proj-title-input" type="text" value="${esc(proj.title)}" placeholder="Project name" />
+          <label>Description</label>
+          <textarea class="proj-desc-input" rows="3" placeholder="Describe the project...">${esc(proj.description)}</textarea>
+          <label>Tags (comma-separated)</label>
+          <input class="proj-tags-input" type="text" value="${esc(proj.tags)}" placeholder="Python, Django, PostgreSQL" />
+          <div class="form-row">
+            <div>
+              <label>Live URL</label>
+              <input class="proj-live-input" type="url" value="${esc(proj.liveUrl || '')}" placeholder="https://..." />
+            </div>
+            <div>
+              <label>Source Code URL</label>
+              <input class="proj-source-input" type="url" value="${esc(proj.sourceUrl || '')}" placeholder="https://github.com/..." />
+            </div>
+          </div>
+        </div>
+      `;
+      }
+
+      function addProject() {
+        data.projects.push({ title: '', description: '', tags: '', liveUrl: '', sourceUrl: '' });
+        renderProjects();
+        const items = document.querySelectorAll('#projectList .dynamic-item');
+        items[items.length - 1]?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+
+      function removeProject(index) {
+        data.projects.splice(index, 1);
+        renderProjects();
+      }
+
+      // ——— Experience CRUD ———
+      function renderExperience() {
+        const container = document.getElementById('expList');
+        container.innerHTML = '';
+        data.experience.forEach((exp, i) => {
+          container.innerHTML += createExpItem(exp, i);
+        });
+      }
+
+      function createExpItem(exp, index) {
+        return `
+        <div class="dynamic-item">
+          <button class="remove-btn" onclick="removeExperience(${index})">×</button>
+          <div class="form-row">
+            <div>
+              <label>Role / Position</label>
+              <input class="exp-role-input" type="text" value="${esc(exp.role)}" placeholder="Data Science Intern" />
+            </div>
+            <div>
+              <label>Company</label>
+              <input class="exp-company-input" type="text" value="${esc(exp.company)}" placeholder="Company name" />
+            </div>
+          </div>
+          <label>Period</label>
+          <input class="exp-period-input" type="text" value="${esc(exp.period)}" placeholder="2025 — 2026" />
+          <label>Description</label>
+          <textarea class="exp-desc-input" rows="3" placeholder="Describe your role...">${esc(exp.description)}</textarea>
+          <label>Tags (comma-separated)</label>
+          <input class="exp-tags-input" type="text" value="${esc(exp.tags)}" placeholder="Python, Data Analysis" />
+        </div>
+      `;
+      }
+
+      function addExperience() {
+        data.experience.push({ role: '', company: '', period: '', description: '', tags: '' });
+        renderExperience();
+        const items = document.querySelectorAll('#expList .dynamic-item');
+        items[items.length - 1]?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+
+      function removeExperience(index) {
+        data.experience.splice(index, 1);
+        renderExperience();
+      }
+
+      // ——— Password Change ———
+      function changePassword() {
+        const current = document.getElementById('currentPass').value;
+        const newPass = document.getElementById('newPass').value;
+        const confirm = document.getElementById('confirmPass').value;
+
+        if (current !== getStoredPass()) {
+          showToast('Current password is incorrect!');
+          return;
+        }
+
+        if (newPass.length < 4) {
+          showToast('New password must be at least 4 characters!');
+          return;
+        }
+
+        if (newPass !== confirm) {
+          showToast('New passwords do not match!');
+          return;
+        }
+
+        localStorage.setItem(PASS_KEY, newPass);
+        document.getElementById('currentPass').value = '';
+        document.getElementById('newPass').value = '';
+        document.getElementById('confirmPass').value = '';
+        showToast('Password updated successfully!');
+      }
+
+      // ——— Export / Import / Reset ———
+      function exportData() {
+        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'portfolio-data.json';
+        a.click();
+        URL.revokeObjectURL(url);
+        showToast('Data exported!');
+      }
+
+      function importData(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          try {
+            const imported = JSON.parse(e.target.result);
+            data = { ...data, ...imported };
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+            loadData();
+            showToast('Data imported successfully!');
+          } catch (err) {
+            showToast('Invalid JSON file!');
+          }
+        };
+        reader.readAsText(file);
+        event.target.value = '';
+      }
+
+      function clearAllData() {
+        if (confirm('Are you sure? This will remove ALL your saved portfolio data.')) {
+          localStorage.removeItem(STORAGE_KEY);
+          location.reload();
+        }
+      }
+
+      // ——— Toast ———
+      function showToast(message) {
+        const toast = document.getElementById('toast');
+        toast.textContent = message;
+        toast.className = 'toast show success';
+        setTimeout(() => { toast.className = 'toast'; }, 3000);
+      }
+
+      // ——— Utility ———
+      function esc(str) {
+        if (!str) return '';
+        return str.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      }
+
+      // Initial load
+      loadData();
+    </script>
+
+  </body>
+
+</html>
